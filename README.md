@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# `mandarin-search`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mandarin Search is a GUI interface for Mandarin developed for the Gestione dell'Informazione exam at 
 
 ## Available Scripts
 
