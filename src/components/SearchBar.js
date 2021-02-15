@@ -9,7 +9,13 @@ export default function SearchBar() {
     const [searchText, setSearchText] = useState("");
 
     function search(_event) {
-        console.debug(`Performing search: ${searchSelect} | ${searchText}`)
+        if(searchText === "") {
+            console.info("Refusing to search an empty string")
+            return;
+        }
+
+        console.info(`Performing search: ${searchSelect} | ${searchText}`)
+        console.error("Search is not yet implemented.")
     }
 
     return (
