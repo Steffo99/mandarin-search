@@ -1,8 +1,8 @@
 import React from "react";
-import Style from "./Layout.module.css"
+import Style from "./Search.module.css"
 
 
-export default function Layout({children}) {
+export default function Search({children}) {
     return (
         <div className={Style.layout}>
             {children}
