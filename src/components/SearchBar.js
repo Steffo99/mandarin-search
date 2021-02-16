@@ -1,22 +1,16 @@
-import React, {useState} from "react";
+import React from "react";
 import Style from "./SearchBar.module.css"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
 
-export default function SearchBar() {
-    const [searchSelect, setSearchSelect] = useState("all");
-    const [searchText, setSearchText] = useState("");
-
-    function search(_event) {
-        if(searchText === "") {
-            console.info("Refusing to search an empty string")
-            return;
-        }
-
-        console.info(`Performing search: ${searchSelect} | ${searchText}`)
-        console.error("Layout is not yet implemented.")
-    }
+export default function SearchBar({
+    searchSelect,
+    setSearchSelect,
+    searchText,
+    setSearchText,
+    search,
+}) {
 
     return (
         <div className={Style.searchBlock}>

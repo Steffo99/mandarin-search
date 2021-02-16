@@ -1,36 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import Style from "./LoginNav.module.css";
 import classNames from "classnames";
 import {useAuth0} from "@auth0/auth0-react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faExclamationCircle, faSpinner, faTimes, faUser} from "@fortawesome/free-solid-svg-icons";
+import ContextInstance from "../contexts/ContextInstance";
 
 
-export default function LoginNav({className, clientId, setClientId, domain, setDomain}) {
-
+export default function LoginNav({className, clientId, setClientId, domain, setDomain, setInstance}) {
     const {
         error,
         isAuthenticated,
         isLoading,
         user,
-        getAccessTokenSilently,
-        getAccessTokenWithPopup,
-        getIdTokenClaims,
         loginWithRedirect,
-        loginWithPopup,
         logout,
     } = useAuth0();
 
-    const [instance, setInstance] = useState("http://127.0.0.1:30009");
-    const [localInstance, setLocalInstance] = useState(instance);
-    const [localClientId, setLocalClientId] = useState(clientId);
-    const [localDomain, setLocalDomain] = useState(domain);
-
-    function setValues() {
-        setInstance(localInstance);
-        setDomain(localDomain);
-        setClientId(localClientId);
-    }
+    const instance = useContext(ContextInstance);
 
     let loginStatus = null;
     let loginButton = null;
@@ -43,36 +30,24 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
         )
         loginButton = (
             <div>
-                <label>
-                    Istanza&nbsp;
-                    <input
-                        type={"text"}
-                        onChange={(e) => setLocalInstance(e.target.value)}
-                        value={instance}
-                    />&nbsp;
-                </label>
-                <label>
-                    Auth0 Domain&nbsp;
-                    <input
-                        type={"text"}
-                        onChange={(e) => setLocalDomain(e.target.value)}
-                        value={localDomain}
-                    />&nbsp;
-                </label>
-                <label>
-                    Auth0 Client ID&nbsp;
-                    <input
-                        type={"text"}
-                        onChange={(e) => setLocalClientId(e.target.value)}
-                        value={localClientId}
-                    />&nbsp;
-                </label>
-                <button
-                    disabled={localInstance === instance && localDomain === domain && localClientId === clientId}
-                    onClick={setValues}
-                >
-                    Applica
-                </button>&nbsp;
+                <input
+                    type={"text"}
+                    onChange={(e) => setInstance(e.target.value)}
+                    value={instance}
+                    placeholder={"Istanza"}
+                />&nbsp;
+                <input
+                    type={"text"}
+                    onChange={(e) => setDomain(e.target.value)}
+                    value={domain}
+                    placeholder={"Auth0 Domain"}
+                />&nbsp;
+                <input
+                    type={"text"}
+                    onChange={(e) => setClientId(e.target.value)}
+                    value={clientId}
+                    placeholder={"Auth0 Client ID"}
+                />&nbsp;
                 <button onClick={loginWithRedirect}>
                     Login
                 </button>
