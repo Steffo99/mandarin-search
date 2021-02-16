@@ -7,6 +7,8 @@ import ContextInstance from "../contexts/ContextInstance";
 import ResultsLayout from "../components/ResultsLayout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEllipsisH} from "@fortawesome/free-solid-svg-icons";
+import Entity from "../components/Entity";
+import Song from "../components/Song";
 
 
 export default function Main() {
@@ -67,6 +69,12 @@ export default function Main() {
             results = (
                 <span><FontAwesomeIcon icon={faEllipsisH}/> Nessun elemento trovato.</span>
             )
+        }
+
+        else {
+            results = searchResults.map((searchResult) => (
+                <Song data={searchResult} key={searchResult["id"]}/>
+            ));
         }
 
         return (

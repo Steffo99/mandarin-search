@@ -6,3 +6,7 @@ body {
   margin: 0;
   color: #ff8500;
 }
+
+.halfparent {
+  opacity: 0.5;
+}
