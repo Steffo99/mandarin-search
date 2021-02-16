@@ -22,6 +22,7 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
         if(queryText === "") {
             console.info("Clearing search results...")
             setSearchResults(null);
+            setRunning(false);
             return;
         }
 
@@ -45,6 +46,8 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
         });
         const data = await response.json();
 
+        setRunning(false);
+
         console.debug("Search results: ", data)
         setSearchResults({
             query: {
@@ -54,7 +57,6 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
             data: data,
         });
 
-        setRunning(false);
     }
 
     return (
@@ -76,6 +78,14 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
                 className={Style.Input}
                 type={"text"}
                 onChange={(e) => setQueryText(e.target.value)}
+                onKeyPress={(e) => {
+                    if(e.key === "Enter") {
+                        // noinspection JSIgnoredPromiseFromCall
+                        if(isAuthenticated && !isRunning) {
+                            search();
+                        }
+                    }
+                }}
                 value={isAuthenticated ? queryText : "Not logged in."}
                 disabled={!isAuthenticated}
             />

@@ -22,7 +22,7 @@ export default function Button({className, children, onClick, size, disabled}) {
             style={{
                 "width": `${SIZE_TO_PIXELS[size]}px`,
                 "height": `${SIZE_TO_PIXELS[size]}px`,
-                "font-size": size,
+                "fontSize": size,
             }}
             className={classNames(
                 Style.Button,
