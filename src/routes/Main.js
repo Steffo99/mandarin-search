@@ -1,23 +1,17 @@
 import React, {useState, useContext} from "react";
-import Layout from "../components/Layout";
+import CoverLayout from "../components/CoverLayout";
 import Logo from "../components/Logo";
 import SearchBar from "../components/SearchBar";
 import {useAuth0} from "@auth0/auth0-react";
 import ContextInstance from "../contexts/ContextInstance";
+import ResultsLayout from "../components/ResultsLayout";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEllipsisH} from "@fortawesome/free-solid-svg-icons";
 
 
 export default function Main() {
     const {
-        error,
-        isAuthenticated,
-        isLoading,
-        user,
         getAccessTokenSilently,
-        getAccessTokenWithPopup,
-        getIdTokenClaims,
-        loginWithRedirect,
-        loginWithPopup,
-        logout,
     } = useAuth0();
 
     const [searchSelect, setSearchSelect] = useState("songs");
@@ -27,7 +21,8 @@ export default function Main() {
 
     async function search(_event) {
         if(searchText === "") {
-            console.info("Refusing to search an empty string")
+            console.info("Clearing search results...")
+            setSearchResults(null);
             return;
         }
 
@@ -55,16 +50,36 @@ export default function Main() {
         setSearchResults(data);
     }
 
+    const searchBar = (
+        <SearchBar
+            searchSelect={searchSelect}
+            setSearchSelect={setSearchSelect}
+            searchText={searchText}
+            setSearchText={setSearchText}
+            search={search}
+        />
+    )
+
+    if(searchResults !== null) {
+        let results;
+
+        if(searchResults.length === 0) {
+            results = (
+                <span><FontAwesomeIcon icon={faEllipsisH}/> Nessun elemento trovato.</span>
+            )
+        }
+
+        return (
+            <ResultsLayout logo={<Logo/>} searchBar={searchBar}>
+                {results}
+            </ResultsLayout>
+        )
+    }
+
     return (
-        <Layout>
+        <CoverLayout>
             <Logo/>
-            <SearchBar
-                searchSelect={searchSelect}
-                setSearchSelect={setSearchSelect}
-                searchText={searchText}
-                setSearchText={setSearchText}
-                search={search}
-            />
-        </Layout>
+            {searchBar}
+        </CoverLayout>
     )
 }

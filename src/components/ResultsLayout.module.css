@@ -1,0 +1,27 @@
+.layout {
+    display: grid;
+    grid-template-areas:
+        "a b"
+        "c d"
+;
+    grid-template-columns: 180px auto;
+    grid-template-rows: 44px auto;
+    grid-column-gap: 24px;
+    grid-row-gap: 24px;
+
+    min-height: calc(100vh - 44px);
+
+    padding: 8px;
+}
+
+.Logo {
+    grid-area: a;
+}
+
+.SearchBar {
+    grid-area: b;
+}
+
+.Results {
+    grid-area: d;
+}
