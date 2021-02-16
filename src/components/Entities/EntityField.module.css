@@ -1,0 +1,13 @@
+.EntityField {
+    display: flex;
+    font-size: x-small;
+}
+
+.Title {
+    width: 80px;
+    color: #5F860A;
+}
+
+.Value {
+    flex-grow: 1;
+}

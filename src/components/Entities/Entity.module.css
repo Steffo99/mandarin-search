@@ -1,16 +1,15 @@
 .Entity {
     display: grid;
     grid-template-areas:
-        "a x"
         "a b"
         "a c"
-        "a y"
     ;
-    grid-template-columns: 64px auto;
+    grid-template-columns: auto 1fr;
     grid-column-gap: 8px;
-    grid-template-rows: 2px 24px auto 2px;
+    grid-template-rows: auto 1fr;
 
-    margin: 4px;
+    margin-top: 16px;
+    margin-bottom: 16px;
 }
 
 .Button {

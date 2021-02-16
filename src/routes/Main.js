@@ -7,21 +7,16 @@ import ContextInstance from "../contexts/ContextInstance";
 import ResultsLayout from "../components/ResultsLayout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEllipsisH} from "@fortawesome/free-solid-svg-icons";
-import Song from "../components/Song";
-import Person from "../components/Person";
-import Album from "../components/Album";
-import Genre from "../components/Genre";
-import Layer from "../components/Layer";
-import Role from "../components/Role";
+import Song from "../components/Entities/Song";
 
 
 const SELECT_TO_ELEMENT_MAP = {
     "songs": Song,
-    "people": Person,
-    "albums": Album,
-    "genres": Genre,
-    "layers": Layer,
-    "roles": Role,
+    "people": null,
+    "albums": null,
+    "genres": null,
+    "layers": null,
+    "roles": null,
 }
 
 
