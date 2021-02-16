@@ -51,7 +51,7 @@ export default function Main() {
         });
         const data = await response.json();
 
-        console.debug("Setting search results...");
+        console.debug("Search results: ", data)
         setSearchResults(data);
     }
 
