@@ -3,7 +3,7 @@ import Style from "./Entity.module.css";
 import classNames from "classnames";
 
 
-export default function Entity({className, button, title, children}) {
+export default function Entity({className, button, title, contents, fields}) {
     return (
         <div className={classNames(Style.Entity, className)}>
             <div className={Style.Button}>
@@ -13,7 +13,10 @@ export default function Entity({className, button, title, children}) {
                 {title}
             </div>
             <div className={Style.Contents}>
-                {children}
+                {contents}
+            </div>
+            <div className={Style.Fields}>
+                {fields}
             </div>
         </div>
     )

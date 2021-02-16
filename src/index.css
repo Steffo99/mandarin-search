@@ -8,6 +8,10 @@ body {
   background-color: white;
 }
 
+a {
+  color: inherit;
+}
+
 .halfparent {
   opacity: 0.3;
 }

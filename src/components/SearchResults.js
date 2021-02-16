@@ -1,13 +1,13 @@
 import React from "react";
 import Style from "./SearchResults.module.css";
 import classNames from "classnames";
-import Song from "./entities/Song";
+import EntitySong from "./entities/EntitySong";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEllipsisH} from "@fortawesome/free-solid-svg-icons";
 
 
 const SELECT_TO_ELEMENT_MAP = {
-    "songs": Song,
+    "songs": EntitySong,
     "people": null,
     "albums": null,
     "genres": null,

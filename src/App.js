@@ -19,7 +19,6 @@ function App() {
             <ContextInstance.Provider value={instance}>
                 <Router>
                     <Main path={"/"}/>
-
                 </Router>
                 <LoginNav
                     domain={domain}
