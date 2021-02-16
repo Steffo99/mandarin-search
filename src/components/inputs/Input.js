@@ -2,7 +2,7 @@ import React from "react";
 import Style from "./Input.module.css";
 import classNames from "classnames";
 
-export default function Input({className, disabled, type, onChange, value}) {
+export default function Input({className, disabled, type, onChange, value, placeholder}) {
     return (
         <input
             type={type}
@@ -10,6 +10,7 @@ export default function Input({className, disabled, type, onChange, value}) {
             disabled={disabled}
             onChange={disabled ? null : onChange}
             value={value}
+            placeholder={placeholder}
         />
     )
 }

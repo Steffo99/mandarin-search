@@ -7,6 +7,7 @@ import LinkAlbum from "../links/LinkAlbum";
 import LinkPerson from "../links/LinkPerson";
 import LinkGenre from "../links/LinkGenre";
 import LinkSong from "../links/LinkSong";
+import classNames from "classnames";
 
 
 export default function EntitySong({className, data}) {
@@ -18,11 +19,11 @@ export default function EntitySong({className, data}) {
     );
 
     const genres = data["genres"].map((genre) => (
-        <LinkGenre data={genre}/>
+        <LinkGenre key={genre["id"]} data={genre}/>
     ))
 
     const involvements = data["involvements"].map((involvement, position) => (
-        <EntityField key={position} title={involvement["role"]["name"]}>
+        <EntityField className={Style.Involvement} key={position} title={involvement["role"]["name"]}>
             <LinkPerson data={involvement["person"]}/>
         </EntityField>
     ))
@@ -33,18 +34,16 @@ export default function EntitySong({className, data}) {
             title={<LinkSong data={data}/>}
             contents={
                 <Fragment>
-                    {data["description"] ?
-                        <div className={Style.Description}>
-                            {data["description"]}
-                        </div>
-                        : null
-                    }
-                    {data["lyrics"] ?
-                        <div className={Style.Lyrics}>
-                            {data["lyrics"]}
-                        </div>
-                        : null
-                    }
+                    <div className={Style.Description}>
+                        {data["description"] ?
+                            data["description"]
+                            :
+                            <span className={"halfparent"}>No description.</span>
+                        }
+                    </div>
+                    <div className={Style.Lyrics}>
+                        {data["lyrics"] ? data["lyrics"] : <span className={"halfparent"}>No lyrics.</span>}
+                    </div>
                 </Fragment>
             }
             fields={
@@ -55,14 +54,14 @@ export default function EntitySong({className, data}) {
                         </EntityField>
                     : null}
                     {involvements}
-                    {data["genres"] ?
+                    {genres.length >= 1 ?
                         <EntityField title={"Genres"} className={Style.Genres}>
                             {genres}
                         </EntityField>
                     : null}
                 </Fragment>
             }
-            className={className}
+            className={classNames(Style.EntitySong, className)}
         />
     )
 }

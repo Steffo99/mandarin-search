@@ -1,17 +1,31 @@
 .layout {
     display: grid;
-    grid-template-areas:
-        "a b"
-        "c d"
-;
     grid-template-columns: 180px auto;
     grid-template-rows: 44px auto;
     grid-column-gap: 24px;
     grid-row-gap: 24px;
 
-    min-height: calc(100vh - 44px);
+    min-height: calc(100vh - 64px);
 
     padding: 8px;
+}
+
+@media screen and (max-width: 899px) {
+    .layout {
+        grid-template-areas:
+            "a b"
+            "d d"
+        ;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .layout {
+        grid-template-areas:
+            "a b"
+            "c d"
+        ;
+    }
 }
 
 .Logo {

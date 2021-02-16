@@ -21,10 +21,6 @@
     padding: 10px 14px;
 }
 
-.Input:active {
-    background-color: rgba(95, 134, 10, 0.5);
-}
-
 .Input[disabled] {
     background-color: #cccccc !important;
     border-color: #666666 !important;

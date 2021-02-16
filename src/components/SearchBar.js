@@ -14,8 +14,11 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
 
     const [queryType, setQueryType] = useState(startingQueryType ?? "songs");
     const [queryText, setQueryText] = useState(startingQueryText ?? "");
+    const [isRunning, setRunning] = useState(false);
 
     async function search(_event) {
+        setRunning(true);
+
         if(queryText === "") {
             console.info("Clearing search results...")
             setSearchResults(null);
@@ -50,6 +53,8 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
             },
             data: data,
         });
+
+        setRunning(false);
     }
 
     return (
@@ -74,7 +79,7 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
                 value={isAuthenticated ? queryText : "Not logged in."}
                 disabled={!isAuthenticated}
             />
-            <SearchButton className={Style.Button} onClick={search} disabled={!isAuthenticated}/>
+            <SearchButton className={Style.Button} onClick={search} disabled={!isAuthenticated} isRunning={isRunning}/>
         </div>
     )
 };

@@ -3,8 +3,10 @@ import Style from "./LoginNav.module.css";
 import classNames from "classnames";
 import {useAuth0} from "@auth0/auth0-react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faExclamationCircle, faSpinner, faTimes, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faExclamationCircle, faSpinner, faTimes, faUserCircle, faSignInAlt, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
 import ContextInstance from "../contexts/ContextInstance";
+import Input from "./inputs/Input";
+import Button from "./buttons/Button";
 
 
 export default function LoginNav({className, clientId, setClientId, domain, setDomain, setInstance}) {
@@ -30,27 +32,27 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
         )
         loginButton = (
             <div>
-                <input
+                <Input
                     type={"text"}
                     onChange={(e) => setInstance(e.target.value)}
                     value={instance}
                     placeholder={"Instance"}
                 />&nbsp;
-                <input
+                <Input
                     type={"text"}
                     onChange={(e) => setDomain(e.target.value)}
                     value={domain}
                     placeholder={"Auth0 Domain"}
                 />&nbsp;
-                <input
+                <Input
                     type={"text"}
                     onChange={(e) => setClientId(e.target.value)}
                     value={clientId}
                     placeholder={"Auth0 Client ID"}
                 />&nbsp;
-                <button onClick={loginWithRedirect}>
-                    Login
-                </button>
+                <Button onClick={loginWithRedirect}>
+                    <FontAwesomeIcon icon={faSignInAlt}/>
+                </Button>
             </div>
         )
     }
@@ -69,12 +71,12 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
 
     else if(user) {
         loginStatus = (
-            <span><FontAwesomeIcon icon={faUser}/> {user["name"]}</span>
+            <span><FontAwesomeIcon icon={faUserCircle}/> {user["name"]}</span>
         )
         loginButton = (
-            <button onClick={() => logout({returnTo: window.location.origin})}>
-                Logout
-            </button>
+            <Button onClick={() => logout({returnTo: window.location.origin})}>
+                <FontAwesomeIcon icon={faSignOutAlt}/>
+            </Button>
         )
     }
 
