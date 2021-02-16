@@ -7,8 +7,22 @@ import ContextInstance from "../contexts/ContextInstance";
 import ResultsLayout from "../components/ResultsLayout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEllipsisH} from "@fortawesome/free-solid-svg-icons";
-import Entity from "../components/Entity";
 import Song from "../components/Song";
+import Person from "../components/Person";
+import Album from "../components/Album";
+import Genre from "../components/Genre";
+import Layer from "../components/Layer";
+import Role from "../components/Role";
+
+
+const SELECT_TO_ELEMENT_MAP = {
+    "songs": Song,
+    "people": Person,
+    "albums": Album,
+    "genres": Genre,
+    "layers": Layer,
+    "roles": Role,
+}
 
 
 export default function Main() {
@@ -18,6 +32,7 @@ export default function Main() {
 
     const [searchSelect, setSearchSelect] = useState("songs");
     const [searchText, setSearchText] = useState("");
+    const [searchResultsSelect, setSearchResultsSelect] = useState(null);
     const [searchResults, setSearchResults] = useState(null);
     const instance = useContext(ContextInstance);
 
@@ -49,6 +64,7 @@ export default function Main() {
         const data = await response.json();
 
         console.debug("Search results: ", data)
+        setSearchResultsSelect(searchSelect);
         setSearchResults(data);
     }
 
@@ -72,9 +88,10 @@ export default function Main() {
         }
 
         else {
-            results = searchResults.map((searchResult) => (
-                <Song data={searchResult} key={searchResult["id"]}/>
-            ));
+            results = searchResults.map((searchResult) => {
+                const Type = SELECT_TO_ELEMENT_MAP[searchResultsSelect];
+                return <Type data={searchResult} key={searchResult["id"]}/>
+            })
         }
 
         return (

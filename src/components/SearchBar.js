@@ -23,6 +23,7 @@ export default function SearchBar({
                 <option value={"people"}>Persone</option>
                 <option value={"albums"}>Album</option>
                 <option value={"genres"}>Generi</option>
+                <option value={"roles"}>Ruoli</option>
                 <option value={"layers"}>Layer</option>
             </select>
             <input
