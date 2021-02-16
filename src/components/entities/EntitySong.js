@@ -6,6 +6,7 @@ import Entity from "./Entity";
 import LinkAlbum from "../links/LinkAlbum";
 import LinkPerson from "../links/LinkPerson";
 import LinkGenre from "../links/LinkGenre";
+import LinkSong from "../links/LinkSong";
 
 
 export default function EntitySong({className, data}) {
@@ -29,7 +30,7 @@ export default function EntitySong({className, data}) {
     return (
         <Entity
             button={button}
-            title={data["title"]}
+            title={<LinkSong data={data}/>}
             contents={
                 <Fragment>
                     {data["description"] ?
