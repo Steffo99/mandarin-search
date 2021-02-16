@@ -1,32 +1,33 @@
-.Button {
+.Select {
     /* Make it perfectly round! */
-    border-radius: 9999px;
-    padding: 0;
+    height: 48px;
+    border-radius: 44px;
+    padding: 8px;
 
     /* Colors... */
     border: 2px solid #ff8500;
     background-color: white;
     color: #5F860A;
-
-    /* And a nice clickable cursor! */
-    cursor: pointer;
 }
 
-.Button:hover {
+.Select:hover {
     background-color: rgba(95, 134, 10, 0.2);
 }
 
-.Button:focus {
+.Select:focus {
     /* Make a custom focus outline */
     outline: none;
     border-width: 4px;
+    padding: 6px;
 }
 
-.Button:active {
+.Select:active {
     background-color: rgba(95, 134, 10, 0.5);
 }
 
-.ButtonDisabled {
-    background-color: darkgray !important;
-    color: dimgray !important;
+.Select[disabled] {
+    background-color: #cccccc !important;
+    border-color: #666666 !important;
+    color: #666666 !important;
+    cursor: not-allowed;
 }

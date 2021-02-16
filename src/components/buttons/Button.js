@@ -26,10 +26,11 @@ export default function Button({className, children, onClick, size, disabled}) {
             }}
             className={classNames(
                 Style.Button,
-                className,
-                disabled ? Style.ButtonDisabled : null
+                className
             )}
-            onClick={disabled ? null : onClick}>
+            onClick={disabled ? null : onClick}
+            disabled={disabled}
+        >
             {children}
         </button>
     )

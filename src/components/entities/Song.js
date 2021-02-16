@@ -1,6 +1,6 @@
 import React from "react";
 import Style from "./Song.module.css";
-import PlayerButton from "../PlayerButton";
+import PlayerButton from "../buttons/PlayerButton";
 import EntityField from "./EntityField";
 import Entity from "./Entity";
 

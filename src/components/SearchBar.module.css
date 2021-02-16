@@ -1,52 +1,21 @@
 .searchBlock {
-    display: flex;
+    display: grid;
+    grid-template-areas: "a b c";
+    grid-template-columns: 80px 1fr auto;
+    grid-column-gap: 8px;
     width: 100%;
     max-width: 638px;
-    gap: 12px;
 }
 
-.searchBlock > * {
-    height: 44px;
-    border-radius: 44px;
-    border: 2px solid #ff8500;
-    vertical-align: bottom;
-
-    padding: 8px;
-
-    font-weight: bold;
-    color: #5F860A;
+.Select {
+    grid-column: 1;
 }
 
-.searchBlock > *:focus {
-    outline: none;
-    padding: 6px;
-    border-width: 4px;
-    background-color: rgba(95, 134, 10, 0.2);
-}
-
-.searchBar {
-    padding: 8px 16px;
+.Input {
+    grid-column: 2;
     flex-grow: 1;
 }
 
-.searchBar:focus {
-    padding: 8px 14px;
-}
-
-.searchButton {
-    width: 44px;
-    cursor: pointer;
-}
-
-.searchButton:hover {
-    background-color: rgba(95, 134, 10, 0.2);
-}
-
-.searchButton:active {
-    background-color: rgba(95, 134, 10, 0.5);
-}
-
-.searchSelect {
-    width: 80px;
-    appearance: none;
+.Button {
+    grid-column: 3;
 }

@@ -3,6 +3,7 @@ import {Auth0Provider} from "@auth0/auth0-react";
 import Main from "./routes/Main";
 import LoginNav from "./components/LoginNav";
 import ContextInstance from "./contexts/ContextInstance";
+import {Router} from "@reach/router";
 
 function App() {
     const [domain, setDomain] = useState("mandarin.eu.auth0.com")
@@ -16,7 +17,10 @@ function App() {
             redirectUri={window.location.origin}
         >
             <ContextInstance.Provider value={instance}>
-                <Main/>
+                <Router>
+                    <Main path={"/"}/>
+
+                </Router>
                 <LoginNav
                     domain={domain}
                     setDomain={setDomain}

@@ -1,40 +1,80 @@
-import React from "react";
+import React, {useState, useContext} from "react";
 import Style from "./SearchBar.module.css"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import {useAuth0} from "@auth0/auth0-react";
+import Input from "./inputs/Input";
+import SearchButton from "./buttons/SearchButton";
+import Select from "./inputs/Select";
+import ContextInstance from "../contexts/ContextInstance";
 
 
-export default function SearchBar({
-    searchSelect,
-    setSearchSelect,
-    searchText,
-    setSearchText,
-    search,
-}) {
+export default function SearchBar({setSearchResults, startingQueryType, startingQueryText}) {
+
+    const {getAccessTokenSilently, isAuthenticated} = useAuth0();
+    const instance = useContext(ContextInstance);
+
+    const [queryType, setQueryType] = useState(startingQueryType ?? "songs");
+    const [queryText, setQueryText] = useState(startingQueryText ?? "");
+
+    async function search(_event) {
+        if(queryText === "") {
+            console.info("Clearing search results...")
+            setSearchResults(null);
+            return;
+        }
+
+        console.info(`Performing search: ${queryType} | ${queryText}`)
+
+        console.debug("Getting access token...")
+        const accessToken = await getAccessTokenSilently({});
+
+        console.debug("Building the URL...")
+        const url = new URL(`${instance}/search/results`);
+        url.search = new URLSearchParams({
+            "element_type": queryType,
+            "query": queryText,
+        }).toString()
+
+        console.debug("Querying the API...")
+        const response = await fetch(url.toString(), {
+            headers: {
+                "Authorization": `Bearer ${accessToken}`
+            }
+        });
+        const data = await response.json();
+
+        console.debug("Search results: ", data)
+        setSearchResults({
+            query: {
+                type: queryType,
+                text: queryText,
+            },
+            data: data,
+        });
+    }
 
     return (
         <div className={Style.searchBlock}>
-            <select
-                className={Style.searchSelect}
-                onChange={(e) => setSearchSelect(e.target.value)}
-                value={searchSelect}
+            <Select
+                onChange={(e) => setQueryType(e.target.value)}
+                value={queryType}
+                className={Style.Select}
+                disabled={!isAuthenticated}
             >
-                <option value={"songs"}>Canzoni</option>
-                <option value={"people"}>Persone</option>
-                <option value={"albums"}>Album</option>
-                <option value={"genres"}>Generi</option>
-                <option value={"roles"}>Ruoli</option>
-                <option value={"layers"}>Layer</option>
-            </select>
-            <input
-                className={Style.searchBar}
+                <option value={"songs"}>Songs</option>
+                <option value={"people"}>People</option>
+                <option value={"albums"}>Albums</option>
+                <option value={"genres"}>Genres</option>
+                <option value={"roles"}>Roles</option>
+                <option value={"layers"}>Layers</option>
+            </Select>
+            <Input
+                className={Style.Input}
                 type={"text"}
-                onChange={(e) => setSearchText(e.target.value)}
-                value={searchText}
+                onChange={(e) => setQueryText(e.target.value)}
+                value={isAuthenticated ? queryText : "Not logged in."}
+                disabled={!isAuthenticated}
             />
-            <button className={Style.searchButton} onClick={search}>
-                <FontAwesomeIcon icon={faSearch}/>
-            </button>
+            <SearchButton className={Style.Button} onClick={search} disabled={!isAuthenticated}/>
         </div>
     )
 };

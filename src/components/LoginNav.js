@@ -25,7 +25,7 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
     if(!isAuthenticated) {
         loginStatus = (
             <div>
-                <span><FontAwesomeIcon icon={faTimes}/> Non hai effettuato il login.</span>
+                <span><FontAwesomeIcon icon={faTimes}/> Not logged in.</span>
             </div>
         )
         loginButton = (
@@ -34,7 +34,7 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
                     type={"text"}
                     onChange={(e) => setInstance(e.target.value)}
                     value={instance}
-                    placeholder={"Istanza"}
+                    placeholder={"Instance"}
                 />&nbsp;
                 <input
                     type={"text"}
@@ -57,7 +57,7 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
 
     else if(isLoading) {
         loginStatus = (
-            <span><FontAwesomeIcon icon={faSpinner} pulse={true}/> Caricamento...</span>
+            <span><FontAwesomeIcon icon={faSpinner} pulse={true}/> Loading...</span>
         )
     }
 

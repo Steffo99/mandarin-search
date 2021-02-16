@@ -1,0 +1,33 @@
+.Input {
+    /* Make it perfectly round! */
+    height: 48px;
+    border-radius: 44px;
+    padding: 10px 16px;
+
+    /* Colors... */
+    border: 2px solid #ff8500;
+    background-color: white;
+    color: #5F860A;
+}
+
+.Input:hover {
+    background-color: rgba(95, 134, 10, 0.2);
+}
+
+.Input:focus {
+    /* Make a custom focus outline */
+    outline: none;
+    border-width: 4px;
+    padding: 10px 14px;
+}
+
+.Input:active {
+    background-color: rgba(95, 134, 10, 0.5);
+}
+
+.Input[disabled] {
+    background-color: #cccccc !important;
+    border-color: #666666 !important;
+    color: #666666 !important;
+    cursor: not-allowed;
+}

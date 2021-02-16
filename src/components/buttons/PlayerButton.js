@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import {useAuth0} from "@auth0/auth0-react";
-import ContextInstance from "../contexts/ContextInstance";
+import ContextInstance from "../../contexts/ContextInstance";
 import Button from "./Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faDownload, faPlay, faPause, faSpinner} from "@fortawesome/free-solid-svg-icons";
