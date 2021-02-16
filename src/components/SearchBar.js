@@ -25,7 +25,6 @@ export default function SearchBar() {
                 onChange={(e) => setSearchSelect(e.target.value)}
                 value={searchSelect}
             >
-                <option value={"all"}>Tutto</option>
                 <option value={"songs"}>Canzoni</option>
                 <option value={"people"}>Persone</option>
                 <option value={"albums"}>Album</option>
