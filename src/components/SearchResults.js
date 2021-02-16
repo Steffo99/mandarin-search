@@ -1,12 +1,12 @@
 import React from "react";
-import Style from "./SearchResults.module.css";
-import classNames from "classnames";
 import EntitySong from "./entities/EntitySong";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faTimes} from "@fortawesome/free-solid-svg-icons";
 import EntityAlbum from "./entities/EntityAlbum";
 import EntityPerson from "./entities/EntityPerson";
 import EntityGenre from "./entities/EntityGenre";
+import EntityLayer from "./entities/EntityLayer";
+import EntityRole from "./entities/EntityRole";
 
 
 const SELECT_TO_ELEMENT_MAP = {
@@ -14,8 +14,8 @@ const SELECT_TO_ELEMENT_MAP = {
     "people": EntityPerson,
     "albums": EntityAlbum,
     "genres": EntityGenre,
-    "layers": null,
-    "roles": null,
+    "layers": EntityLayer,
+    "roles": EntityRole,
 }
 
 
