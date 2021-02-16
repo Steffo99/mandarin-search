@@ -8,22 +8,39 @@ import LinkPerson from "../links/LinkPerson";
 import LinkGenre from "../links/LinkGenre";
 import LinkSong from "../links/LinkSong";
 import classNames from "classnames";
+import Button from "../buttons/Button";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faLayerGroup, faTimes} from "@fortawesome/free-solid-svg-icons";
+import LinkRole from "../links/LinkRole";
 
 
 export default function EntitySong({className, data}) {
 
-    const button = (
-        data["layers"].length === 1 ?
+    let button;
+    if (data["layers"].length === 0) {
+        button = (
+            <Button size={"large"} disabled={true}>
+                <FontAwesomeIcon icon={faTimes}/>
+            </Button>
+        );
+    } else if(data["layers"].length > 1) {
+        button = (
+            <Button size={"large"} disabled={true}>
+                <FontAwesomeIcon icon={faLayerGroup}/>
+            </Button>
+        );
+    } else {
+        button = (
             <PlayerButton size={"large"} layerId={data["layers"][0]["id"]}/>
-        : null
-    );
+        );
+    }
 
     const genres = data["genres"].map((genre) => (
         <LinkGenre key={genre["id"]} data={genre}/>
     ))
 
     const involvements = data["involvements"].map((involvement, position) => (
-        <EntityField className={Style.Involvement} key={position} title={involvement["role"]["name"]}>
+        <EntityField className={Style.Involvement} key={position} title={<LinkRole data={involvement["role"]}/>}>
             <LinkPerson data={involvement["person"]}/>
         </EntityField>
     ))

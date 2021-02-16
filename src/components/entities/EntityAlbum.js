@@ -6,6 +6,7 @@ import LinkPerson from "../links/LinkPerson";
 import LinkGenre from "../links/LinkGenre";
 import Style from "./EntityAlbum.module.css";
 import classNames from "classnames";
+import LinkRole from "../links/LinkRole";
 
 
 export default function EntityAlbum({className, data}) {
@@ -17,7 +18,7 @@ export default function EntityAlbum({className, data}) {
     ))
 
     const involvements = data["involvements"].map((involvement, position) => (
-        <EntityField className={Style.Involvement} key={position} title={involvement["role"]["name"]}>
+        <EntityField className={Style.Involvement} key={position} title={<LinkRole data={involvement["role"]}/>}>
             <LinkPerson data={involvement["person"]}/>
         </EntityField>
     ))

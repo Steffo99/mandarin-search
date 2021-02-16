@@ -5,6 +5,7 @@ import EntityField from "./EntityField";
 import Entity from "./Entity";
 import LinkSong from "../links/LinkSong";
 import classNames from "classnames";
+import LinkLayer from "../links/LinkLayer";
 
 
 export default function EntityLayer({className, data}) {
@@ -16,7 +17,7 @@ export default function EntityLayer({className, data}) {
     return (
         <Entity
             button={button}
-            title={<LinkSong data={data}/>}
+            title={<LinkLayer data={data}/>}
             contents={
                 <Fragment>
                     <div className={Style.Description}>
