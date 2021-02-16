@@ -15,7 +15,7 @@ export default function SearchBar() {
         }
 
         console.info(`Performing search: ${searchSelect} | ${searchText}`)
-        console.error("Search is not yet implemented.")
+        console.error("Layout is not yet implemented.")
     }
 
     return (
