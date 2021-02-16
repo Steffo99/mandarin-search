@@ -10,16 +10,6 @@
     height: 44px;
 }
 
-.LoginText {
-    vertical-align: center;
-}
-
-.LoginButton {
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
 .VerticalCenter {
     display: flex;
     flex-direction: column;

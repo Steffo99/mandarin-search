@@ -21,11 +21,13 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
         logout,
     } = useAuth0();
 
-    const [instance, setInstance] = useState("127.0.0.1:30009");
+    const [instance, setInstance] = useState("http://127.0.0.1:30009");
+    const [localInstance, setLocalInstance] = useState(instance);
     const [localClientId, setLocalClientId] = useState(clientId);
     const [localDomain, setLocalDomain] = useState(domain);
 
     function setValues() {
+        setInstance(localInstance);
         setDomain(localDomain);
         setClientId(localClientId);
     }
@@ -36,7 +38,7 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
     if(!isAuthenticated) {
         loginStatus = (
             <div>
-                <span className={Style.LoginText}><FontAwesomeIcon icon={faTimes}/> Non hai effettuato il login.</span>
+                <span><FontAwesomeIcon icon={faTimes}/> Non hai effettuato il login.</span>
             </div>
         )
         loginButton = (
@@ -45,7 +47,7 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
                     Istanza&nbsp;
                     <input
                         type={"text"}
-                        onChange={(e) => setInstance(e.target.value)}
+                        onChange={(e) => setLocalInstance(e.target.value)}
                         value={instance}
                     />&nbsp;
                 </label>
@@ -65,9 +67,15 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
                         value={localClientId}
                     />&nbsp;
                 </label>
-                <a className={Style.LoginButton} onClick={loginWithRedirect}>
+                <button
+                    disabled={localInstance === instance && localDomain === domain && localClientId === clientId}
+                    onClick={setValues}
+                >
+                    Applica
+                </button>&nbsp;
+                <button onClick={loginWithRedirect}>
                     Login
-                </a>
+                </button>
             </div>
         )
     }
@@ -86,12 +94,12 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
 
     else if(user) {
         loginStatus = (
-            <span><FontAwesomeIcon className={Style.LoginText} icon={faUser}/> {user["name"]}</span>
+            <span><FontAwesomeIcon icon={faUser}/> {user["name"]}</span>
         )
         loginButton = (
-            <a className={Style.LoginButton} onClick={() => logout({returnTo: window.location.origin})}>
+            <button onClick={() => logout({returnTo: window.location.origin})}>
                 Logout
-            </a>
+            </button>
         )
     }
 
