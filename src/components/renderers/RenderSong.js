@@ -1,16 +1,13 @@
-import React from "react";
-import classNames from "classnames";
-import EntitySong from "../entities/EntitySong";
-import Field from "../Field";
-import LinkGenre from "../links/LinkGenre";
-import LinkRole from "../links/LinkRole";
-import LinkPerson from "../links/LinkPerson";
-import Description from "../Description";
-import Lyrics from "../Lyrics";
-import EntityLayer from "../entities/EntityLayer";
-import EntityField from "../entities/EntityField";
-import Style from "../entities/EntitySong.module.css";
-import LinkAlbum from "../links/LinkAlbum";
+import React from "react"
+import Field from "../Field"
+import LinkGenre from "../links/LinkGenre"
+import LinkRole from "../links/LinkRole"
+import LinkPerson from "../links/LinkPerson"
+import Description from "../Description"
+import Lyrics from "../Lyrics"
+import EntityLayer from "../entities/EntityLayer"
+import Style from "../entities/EntitySong.module.css"
+import LinkAlbum from "../links/LinkAlbum"
 
 
 export default function RenderSong({data}) {
@@ -36,18 +33,18 @@ export default function RenderSong({data}) {
                 <Field title={"Album"} className={Style.Album}>
                     <LinkAlbum data={data["album"]}/> {data["year"] ? `(${data["year"]})` : null}
                 </Field>
-            : null}
+                : null}
             {data["disc"] || data["track"] ?
                 <Field title={"Position"}>
                     {data["disc"] ? `Disc ${data["disc"]}` : null} {data["track"] ? `- Track ${data["track"]}` : null}
                 </Field>
-            : null}
+                : null}
             {involvements}
             {genres.length >= 1 ?
                 <Field title={"Genres"}>
                     {genres}
                 </Field>
-            : null}
+                : null}
             <h2>Layers</h2>
             {entities}
         </div>

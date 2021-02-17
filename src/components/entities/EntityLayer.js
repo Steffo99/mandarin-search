@@ -1,19 +1,19 @@
-import React, {Fragment} from "react";
-import Style from "./EntityLayer.module.css";
-import PlayerButton from "../buttons/PlayerButton";
-import EntityField from "./EntityField";
-import Entity from "./Entity";
-import LinkSong from "../links/LinkSong";
-import classNames from "classnames";
-import LinkLayer from "../links/LinkLayer";
-import Description from "../Description";
+import React, {Fragment} from "react"
+import Style from "./EntityLayer.module.css"
+import PlayerButton from "../buttons/PlayerButton"
+import EntityField from "./EntityField"
+import Entity from "./Entity"
+import LinkSong from "../links/LinkSong"
+import classNames from "classnames"
+import LinkLayer from "../links/LinkLayer"
+import Description from "../Description"
 
 
 export default function EntityLayer({className, data}) {
 
     const button = (
         <PlayerButton size={"large"} layerId={data["id"]}/>
-    );
+    )
 
     return (
         <Entity
@@ -28,7 +28,7 @@ export default function EntityLayer({className, data}) {
                         <EntityField title={"Song"} className={Style.Song}>
                             <LinkSong data={data["song"]}/>
                         </EntityField>
-                    : null}
+                        : null}
                 </Fragment>
             }
             className={classNames(Style.EntitySong, className)}

@@ -13,11 +13,11 @@
 }
 
 .Button:active {
-    background-color: rgba(255,133,0, 0.5);
+    background-color: rgba(255, 133, 0, 0.5);
 }
 
 .Button:hover {
-    background-color: rgba(255,133,0, 0.2);
+    background-color: rgba(255, 133, 0, 0.2);
 }
 
 .Button:focus {

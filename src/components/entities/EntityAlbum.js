@@ -1,18 +1,18 @@
-import React, {Fragment} from "react";
-import EntityField from "./EntityField";
-import Entity from "./Entity";
-import LinkAlbum from "../links/LinkAlbum";
-import LinkPerson from "../links/LinkPerson";
-import LinkGenre from "../links/LinkGenre";
-import Style from "./EntityAlbum.module.css";
-import classNames from "classnames";
-import LinkRole from "../links/LinkRole";
-import Description from "../Description";
+import React, {Fragment} from "react"
+import EntityField from "./EntityField"
+import Entity from "./Entity"
+import LinkAlbum from "../links/LinkAlbum"
+import LinkPerson from "../links/LinkPerson"
+import LinkGenre from "../links/LinkGenre"
+import Style from "./EntityAlbum.module.css"
+import classNames from "classnames"
+import LinkRole from "../links/LinkRole"
+import Description from "../Description"
 
 
 export default function EntityAlbum({className, data}) {
 
-    const button = null;
+    const button = null
 
     const genres = data["genres"].map((genre) => (
         <LinkGenre data={genre}/>
@@ -38,7 +38,7 @@ export default function EntityAlbum({className, data}) {
                         <EntityField title={"Genres"} className={Style.Genres}>
                             {genres}
                         </EntityField>
-                    : null}
+                        : null}
                 </Fragment>
             }
             className={classNames(Style.EntityAlbum, className)}

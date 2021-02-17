@@ -1,15 +1,14 @@
-import React from "react";
-import LinkGenre from "../links/LinkGenre";
-import Description from "../Description";
-import LinkAlbum from "../links/LinkAlbum";
-import GenreTree from "../GenreTree";
-import LinkSong from "../links/LinkSong";
-import EntitySong from "../entities/EntitySong";
+import React from "react"
+import LinkGenre from "../links/LinkGenre"
+import Description from "../Description"
+import LinkAlbum from "../links/LinkAlbum"
+import GenreTree from "../GenreTree"
+import EntitySong from "../entities/EntitySong"
 
 
 export default function RenderGenre({data}) {
-    let tree;
-    if(data["supergenre"]) {
+    let tree
+    if (data["supergenre"]) {
         tree = (
             <ul>
                 <li>
@@ -20,8 +19,7 @@ export default function RenderGenre({data}) {
                 </li>
             </ul>
         )
-    }
-    else {
+    } else {
         tree = (
             <ul>
                 <GenreTree data={data}/>

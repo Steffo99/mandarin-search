@@ -1,17 +1,17 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  color: #ff8500;
-  background-color: white;
+    margin: 0;
+    color: #ff8500;
+    background-color: white;
 }
 
 a {
-  color: inherit;
+    color: inherit;
 }
 
 .halfparent {
-  opacity: 0.5;
+    opacity: 0.5;
 }

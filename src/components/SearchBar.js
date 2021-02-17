@@ -1,74 +1,40 @@
-import React, {useState, useContext} from "react";
+import React, {useState} from "react"
+import {useAuth0} from "@auth0/auth0-react"
 import Style from "./SearchBar.module.css"
-import {useAuth0} from "@auth0/auth0-react";
-import Input from "./inputs/Input";
-import SearchButton from "./buttons/SearchButton";
-import Select from "./inputs/Select";
-import ContextInstance from "../contexts/ContextInstance";
-import ToggleButton from "./buttons/ToggleButton";
-import SettingsButton from "./buttons/SettingsButton";
+import Input from "./inputs/Input"
+import SearchButton from "./buttons/SearchButton"
+import Select from "./inputs/Select"
+import SettingsButton from "./buttons/SettingsButton"
+import AdvancedSettings from "./AdvancedSettings"
+import classNames from "classnames"
 
 
-export default function SearchBar({setSearchResults, startingQueryType, startingQueryText}) {
+export default function SearchBar({search}) {
+    const {isAuthenticated} = useAuth0()
 
-    const {getAccessTokenSilently, isAuthenticated} = useAuth0();
-    const instance = useContext(ContextInstance);
+    const [showAdvanced, setAdvanced] = useState(false)
 
-    const [queryType, setQueryType] = useState(startingQueryType ?? "songs");
-    const [queryText, setQueryText] = useState(startingQueryText ?? "");
-    const [isRunning, setRunning] = useState(false);
-    const [isAdvanced, setAdvanced] = useState(false);
+    const disabled = (!isAuthenticated || search.isLoading)
+    let text
+    if (!isAuthenticated) {
+        text = "Login required to search ↓"
+    } else {
+        text = search.text
+    }
 
-    async function search(_event) {
-        setRunning(true);
-
-        if(queryText === "") {
-            console.info("Clearing search results...")
-            setSearchResults(null);
-            setRunning(false);
-            return;
+    function searchOnEnter(event) {
+        if (event.key === "Enter" && !disabled) {
+            search.search()
         }
-
-        console.info(`Performing search: ${queryType} | ${queryText}`)
-
-        console.debug("Getting access token...")
-        const accessToken = await getAccessTokenSilently({});
-
-        console.debug("Building the URL...")
-        const url = new URL(`${instance}/search/results`);
-        url.search = new URLSearchParams({
-            "element_type": queryType,
-            "query": queryText,
-        }).toString()
-
-        console.debug("Querying the API...")
-        const response = await fetch(url.toString(), {
-            headers: {
-                "Authorization": `Bearer ${accessToken}`
-            }
-        });
-        const data = await response.json();
-
-        setRunning(false);
-
-        console.debug("Search results: ", data)
-        setSearchResults({
-            query: {
-                type: queryType,
-                text: queryText,
-            },
-            data: data,
-        });
-
     }
 
     return (
         <div className={Style.searchBlock}>
             <Select
-                onChange={(e) => setQueryType(e.target.value)}
-                value={queryType}
+                value={search.type}
+                disabled={disabled}
+                onChange={(e) => search.setType(e.target.value)}
                 className={Style.Select}
-                disabled={!isAuthenticated}
             >
                 <option value={"songs"}>Songs</option>
                 <option value={"people"}>People</option>
@@ -78,22 +44,27 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
                 <option value={"layers"}>Layers</option>
             </Select>
             <Input
-                className={Style.Input}
-                type={"text"}
-                onChange={(e) => setQueryText(e.target.value)}
-                onKeyPress={(e) => {
-                    if(e.key === "Enter") {
-                        // noinspection JSIgnoredPromiseFromCall
-                        if(isAuthenticated && !isRunning) {
-                            search();
-                        }
-                    }
-                }}
-                value={isAuthenticated ? queryText : "Login required to search"}
+                value={text}
                 disabled={!isAuthenticated}
+                onChange={(e) => search.setText(e.target.value)}
+                onKeyPress={searchOnEnter}
+                className={Style.Input}
             />
-            <SearchButton className={Style.Search} onClick={search} disabled={!isAuthenticated} isRunning={isRunning}/>
-            <SettingsButton className={Style.Settings} state={isAdvanced} setState={setAdvanced}/>
+            <SearchButton
+                className={Style.Search}
+                onClick={search.search}
+                disabled={disabled}
+                isRunning={search.isLoading}
+            />
+            <SettingsButton
+                className={Style.Settings}
+                state={showAdvanced}
+                setState={setAdvanced}
+            />
+            <AdvancedSettings
+                search={search}
+                className={classNames(Style.Advanced, showAdvanced ? Style.AdvancedShow : Style.AdvancedHide)}
+            />
         </div>
     )
 };

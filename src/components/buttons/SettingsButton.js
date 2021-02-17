@@ -1,9 +1,9 @@
-import React from "react";
-import Style from "./SettingsButton.module.css";
-import classNames from "classnames";
-import ToggleButton from "./ToggleButton";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCog} from "@fortawesome/free-solid-svg-icons";
+import React from "react"
+import Style from "./SettingsButton.module.css"
+import classNames from "classnames"
+import ToggleButton from "./ToggleButton"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faCog} from "@fortawesome/free-solid-svg-icons"
 
 
 export default function SettingsButton({className, size, disabled, state, setState}) {

@@ -1,6 +1,6 @@
-import React from "react";
-import Style from "./EntityField.module.css";
-import classNames from "classnames";
+import React from "react"
+import Style from "./EntityField.module.css"
+import classNames from "classnames"
 
 
 export default function EntityField({children, className, title}) {

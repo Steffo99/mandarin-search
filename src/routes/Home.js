@@ -1,31 +1,15 @@
-import React, {useState} from "react";
-import CoverLayout from "../components/layouts/CoverLayout";
-import Logo from "../components/Logo";
-import SearchBar from "../components/SearchBar";
-import ResultsLayout from "../components/layouts/ResultsLayout";
-import SearchResults from "../components/SearchResults";
+import React from "react"
+import CoverLayout from "../components/layouts/CoverLayout"
+import Logo from "../components/Logo"
+import SearchBar from "../components/SearchBar"
 
 
-export default function Home() {
-    const [searchResults, setSearchResults] = useState(null);
+export default function Home({search}) {
 
     const logo = <Logo/>
     const searchBar = (
-        <SearchBar
-            setSearchResults={setSearchResults}
-            startingQueryType={searchResults ? searchResults.query.type : undefined}
-            startingQueryText={searchResults ? searchResults.query.text : undefined}
-        />
+        <SearchBar search={search}/>
     )
-
-    if(searchResults !== null) {
-
-        return (
-            <ResultsLayout logo={logo} searchBar={searchBar}>
-                <SearchResults value={searchResults}/>
-            </ResultsLayout>
-        );
-    }
 
     return (
         <CoverLayout>

@@ -1,3 +1,3 @@
-import {createContext} from "react";
+import {createContext} from "react"
 
-export default createContext("http://127.0.0.1:30009");
+export default createContext("http://127.0.0.1:30009")

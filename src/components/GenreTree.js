@@ -1,6 +1,5 @@
-import React from "react";
-import classNames from "classnames";
-import LinkGenre from "./links/LinkGenre";
+import React from "react"
+import LinkGenre from "./links/LinkGenre"
 
 
 export default function GenreTree({data, className}) {

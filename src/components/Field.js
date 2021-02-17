@@ -1,6 +1,6 @@
-import React from "react";
-import Style from "./Field.module.css";
-import classNames from "classnames";
+import React from "react"
+import Style from "./Field.module.css"
+import classNames from "classnames"
 
 
 export default function Field({children, className, title}) {

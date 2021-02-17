@@ -14,8 +14,7 @@
     .layout {
         grid-template-areas:
             "a b"
-            "d d"
-        ;
+            "d d";
     }
 }
 
@@ -23,8 +22,7 @@
     .layout {
         grid-template-areas:
             "a b"
-            "c d"
-        ;
+            "c d";
     }
 }
 

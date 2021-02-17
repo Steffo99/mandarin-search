@@ -1,12 +1,20 @@
-import React, {useState, useContext} from "react";
-import Style from "./LoginNav.module.css";
-import classNames from "classnames";
-import {useAuth0} from "@auth0/auth0-react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faExclamationCircle, faSpinner, faTimes, faUserCircle, faSignInAlt, faSignOutAlt, faServer} from "@fortawesome/free-solid-svg-icons";
-import ContextInstance from "../contexts/ContextInstance";
-import Input from "./inputs/Input";
-import Button from "./buttons/Button";
+import React, {useContext} from "react"
+import Style from "./LoginNav.module.css"
+import classNames from "classnames"
+import {useAuth0} from "@auth0/auth0-react"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {
+    faExclamationCircle,
+    faServer,
+    faSignInAlt,
+    faSignOutAlt,
+    faSpinner,
+    faTimes,
+    faUserCircle
+} from "@fortawesome/free-solid-svg-icons"
+import ContextInstance from "../contexts/ContextInstance"
+import Input from "./inputs/Input"
+import Button from "./buttons/Button"
 
 
 export default function LoginNav({className, clientId, setClientId, domain, setDomain, setInstance}) {
@@ -17,14 +25,14 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
         user,
         loginWithRedirect,
         logout,
-    } = useAuth0();
+    } = useAuth0()
 
-    const instance = useContext(ContextInstance);
+    const instance = useContext(ContextInstance)
 
-    let loginStatus = null;
-    let loginButton = null;
+    let loginStatus = null
+    let loginButton = null
 
-    if(!isAuthenticated) {
+    if (!isAuthenticated) {
         loginStatus = (
             <div>
                 <span><FontAwesomeIcon icon={faTimes}/> Not logged in.</span>
@@ -55,21 +63,15 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
                 </Button>
             </div>
         )
-    }
-
-    else if(isLoading) {
+    } else if (isLoading) {
         loginStatus = (
             <span><FontAwesomeIcon icon={faSpinner} pulse={true}/> Loading...</span>
         )
-    }
-
-    else if(error) {
+    } else if (error) {
         loginStatus = (
             <span><FontAwesomeIcon icon={faExclamationCircle}/> {error.toString()}</span>
         )
-    }
-
-    else if(user) {
+    } else if (user) {
         loginStatus = (
             <div>
                 <span className={Style.LoginField}><FontAwesomeIcon icon={faUserCircle}/> {user["name"]}</span>

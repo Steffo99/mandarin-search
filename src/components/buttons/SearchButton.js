@@ -1,7 +1,7 @@
-import React from "react";
-import Button from "./Button";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch, faSpinner} from "@fortawesome/free-solid-svg-icons";
+import React from "react"
+import Button from "./Button"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faSearch, faSpinner} from "@fortawesome/free-solid-svg-icons"
 
 
 export default function SearchButton({className, size, isRunning, onClick, disabled}) {

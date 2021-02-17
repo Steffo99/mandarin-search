@@ -1,40 +1,40 @@
-import React, {Fragment} from "react";
-import Style from "./EntitySong.module.css";
-import PlayerButton from "../buttons/PlayerButton";
-import EntityField from "./EntityField";
-import Entity from "./Entity";
-import LinkAlbum from "../links/LinkAlbum";
-import LinkPerson from "../links/LinkPerson";
-import LinkGenre from "../links/LinkGenre";
-import LinkSong from "../links/LinkSong";
-import classNames from "classnames";
-import Button from "../buttons/Button";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faLayerGroup, faTimes} from "@fortawesome/free-solid-svg-icons";
-import LinkRole from "../links/LinkRole";
-import Description from "../Description";
-import Lyrics from "../Lyrics";
+import React, {Fragment} from "react"
+import Style from "./EntitySong.module.css"
+import PlayerButton from "../buttons/PlayerButton"
+import EntityField from "./EntityField"
+import Entity from "./Entity"
+import LinkAlbum from "../links/LinkAlbum"
+import LinkPerson from "../links/LinkPerson"
+import LinkGenre from "../links/LinkGenre"
+import LinkSong from "../links/LinkSong"
+import classNames from "classnames"
+import Button from "../buttons/Button"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import {faLayerGroup, faTimes} from "@fortawesome/free-solid-svg-icons"
+import LinkRole from "../links/LinkRole"
+import Description from "../Description"
+import Lyrics from "../Lyrics"
 
 
 export default function EntitySong({className, data}) {
 
-    let button;
+    let button
     if (data["layers"].length === 0) {
         button = (
             <Button size={"large"} disabled={true}>
                 <FontAwesomeIcon icon={faTimes}/>
             </Button>
-        );
-    } else if(data["layers"].length > 1) {
+        )
+    } else if (data["layers"].length > 1) {
         button = (
             <Button size={"large"} disabled={true}>
                 <FontAwesomeIcon icon={faLayerGroup}/>
             </Button>
-        );
+        )
     } else {
         button = (
             <PlayerButton size={"large"} layerId={data["layers"][0]["id"]}/>
-        );
+        )
     }
 
     const genres = data["genres"].map((genre) => (
@@ -63,18 +63,18 @@ export default function EntitySong({className, data}) {
                         <EntityField title={"Album"} className={Style.Album}>
                             <LinkAlbum data={data["album"]}/> {data["year"] ? `(${data["year"]})` : null}
                         </EntityField>
-                    : null}
+                        : null}
                     {data["disc"] || data["track"] ?
                         <EntityField title={"Position"}>
                             {data["disc"] ? `Disc ${data["disc"]}` : null} {data["track"] ? `- Track ${data["track"]}` : null}
                         </EntityField>
-                    : null}
+                        : null}
                     {involvements}
                     {genres.length >= 1 ?
                         <EntityField title={"Genres"} className={Style.Genres}>
                             {genres}
                         </EntityField>
-                    : null}
+                        : null}
                 </Fragment>
             }
             className={classNames(Style.EntitySong, className)}

@@ -1,6 +1,6 @@
-import React from "react";
-import Style from "./Select.module.css";
-import classNames from "classnames";
+import React from "react"
+import Style from "./Select.module.css"
+import classNames from "classnames"
 
 export default function Select({children, className, disabled, onChange, value}) {
     return (

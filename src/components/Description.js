@@ -1,10 +1,10 @@
-import React from "react";
-import Style from "./Description.module.css";
-import classNames from "classnames";
+import React from "react"
+import Style from "./Description.module.css"
+import classNames from "classnames"
 
 
 export default function Description({text, className}) {
-    if(text) {
+    if (text) {
         return (
             <div className={classNames(Style.Description, className)}>
                 {text}

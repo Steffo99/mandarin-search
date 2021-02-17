@@ -1,18 +1,8 @@
-import React from "react";
-import classNames from "classnames";
-import EntitySong from "../entities/EntitySong";
-import Field from "../Field";
-import LinkGenre from "../links/LinkGenre";
-import LinkRole from "../links/LinkRole";
-import LinkPerson from "../links/LinkPerson";
-import Description from "../Description";
-import Lyrics from "../Lyrics";
-import EntityLayer from "../entities/EntityLayer";
-import EntityField from "../entities/EntityField";
-import Style from "../entities/EntitySong.module.css";
-import LinkAlbum from "../links/LinkAlbum";
-import LinkSong from "../links/LinkSong";
-import PlayerButton from "../buttons/PlayerButton";
+import React from "react"
+import Field from "../Field"
+import Description from "../Description"
+import LinkSong from "../links/LinkSong"
+import PlayerButton from "../buttons/PlayerButton"
 
 
 export default function RenderLayer({data}) {
@@ -24,7 +14,7 @@ export default function RenderLayer({data}) {
                 <Field title={"Song"}>
                     <LinkSong data={data["song"]}/>
                 </Field>
-            : null}
+                : null}
             <h2>Listen</h2>
             <PlayerButton size={"large"} layerId={data["id"]}/>
         </div>

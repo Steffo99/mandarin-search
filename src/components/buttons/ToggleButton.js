@@ -1,7 +1,7 @@
-import React, {useState} from "react";
-import Style from "./ToggleButton.module.css";
-import classNames from "classnames";
-import Button from "./Button";
+import React from "react"
+import Style from "./ToggleButton.module.css"
+import classNames from "classnames"
+import Button from "./Button"
 
 
 export default function ToggleButton({children, className, state, setState}) {
@@ -12,7 +12,9 @@ export default function ToggleButton({children, className, state, setState}) {
                 state ? Style.True : Style.False,
                 className
             )}
-            onClick={(_e) => {setState(!state)}}
+            onClick={(_e) => {
+                setState(!state)
+            }}
         >
             {children}
         </Button>

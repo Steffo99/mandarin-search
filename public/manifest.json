@@ -1,11 +1,10 @@
 {
-  "short_name": "M-Search",
-  "name": "Mandarin Search",
-  "icons": [
-
-  ],
-  "start_url": "/",
-  "display": "browser",
-  "theme_color": "#ff8500",
-  "background_color": "#ffffff"
+    "short_name": "M-Search",
+    "name": "Mandarin Search",
+    "icons": [
+    ],
+    "start_url": "/",
+    "display": "browser",
+    "theme_color": "#ff8500",
+    "background_color": "#ffffff"
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import Style from "./Entity.module.css";
-import classNames from "classnames";
+import React from "react"
+import Style from "./Entity.module.css"
+import classNames from "classnames"
 
 
 export default function Entity({className, button, title, contents, fields}) {
@@ -10,22 +10,22 @@ export default function Entity({className, button, title, contents, fields}) {
                 <div className={Style.Button}>
                     {button}
                 </div>
-            : null}
+                : null}
             {title ?
                 <div className={Style.Title}>
                     {title}
                 </div>
-            : null}
+                : null}
             {contents ?
                 <div className={Style.Contents}>
                     {contents}
                 </div>
-            : null}
+                : null}
             {fields ?
                 <div className={Style.Fields}>
                     {fields}
                 </div>
-            : null}
+                : null}
         </div>
     )
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import Style from "./Button.module.css";
-import classNames from "classnames";
+import React from "react"
+import Style from "./Button.module.css"
+import classNames from "classnames"
 
 
 const SIZE_TO_PIXELS = {
@@ -15,7 +15,7 @@ const SIZE_TO_PIXELS = {
 
 
 export default function Button({className, children, onClick, size, disabled}) {
-    size = size ?? "medium";
+    size = size ?? "medium"
 
     return (
         <button

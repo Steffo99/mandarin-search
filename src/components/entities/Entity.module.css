@@ -5,8 +5,7 @@
     grid-column-gap: 8px;
     grid-template-areas:
             "a b b"
-            "a c d"
-    ;
+            "a c d";
     margin-top: 16px;
     margin-bottom: 16px;
 }

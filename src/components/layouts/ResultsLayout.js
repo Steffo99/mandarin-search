@@ -1,15 +1,17 @@
-import React from "react";
+import React from "react"
 import Style from "./ResultsLayout.module.css"
+import SearchBar from "../SearchBar"
+import Logo from "../Logo"
 
 
-export default function ResultsLayout({logo, searchBar, children}) {
+export default function ResultsLayout({children}) {
     return (
         <div className={Style.layout}>
             <div className={Style.Logo}>
-                {logo}
+                <Logo/>
             </div>
             <div className={Style.SearchBar}>
-                {searchBar}
+                <SearchBar/>
             </div>
             <div className={Style.Results}>
                 {children}

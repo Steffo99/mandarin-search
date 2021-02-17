@@ -1,15 +1,15 @@
-import React, {Fragment} from "react";
-import EntityField from "./EntityField";
-import Entity from "./Entity";
-import LinkGenre from "../links/LinkGenre";
-import Style from "./EntityGenre.module.css";
-import classNames from "classnames";
-import Description from "../Description";
+import React, {Fragment} from "react"
+import EntityField from "./EntityField"
+import Entity from "./Entity"
+import LinkGenre from "../links/LinkGenre"
+import Style from "./EntityGenre.module.css"
+import classNames from "classnames"
+import Description from "../Description"
 
 
 export default function EntityGenre({className, data}) {
 
-    const button = null;
+    const button = null
 
     const supergenre = (
         <EntityField title={"Supergenre"} className={Style.Supergenre}>
@@ -20,7 +20,7 @@ export default function EntityGenre({className, data}) {
         <EntityField key={genre["id"]} title={"Subgenre"} className={Style.Subgenre}>
             <LinkGenre data={genre}/>
         </EntityField>
-    ));
+    ))
 
     return (
         <Entity
