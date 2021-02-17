@@ -5,8 +5,12 @@
 }
 
 .Slider {
-    width: 100%;
+    flex-grow: 1;
     height: 100%;
+}
+
+.SliderValue {
+    width: 28px;
 }
 
 @-moz-document url-prefix() {

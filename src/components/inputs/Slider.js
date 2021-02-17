@@ -7,6 +7,7 @@ export default function Slider({
                                    children,
                                    containerClassName,
                                    sliderClassName,
+                                   valueClassName,
                                    min,
                                    max,
                                    step,
@@ -15,7 +16,7 @@ export default function Slider({
                                    digits
                                }) {
     return (
-        <div className={classNames(Style.SliderContainer, sliderClassName)}>
+        <div className={classNames(Style.SliderContainer, containerClassName)}>
             <input
                 type={"range"}
                 min={min}
@@ -26,9 +27,9 @@ export default function Slider({
                 className={classNames(Style.Slider, sliderClassName)}>
                 {children}
             </input>
-            <span>
+            <div className={classNames(Style.SliderValue, valueClassName)}>
                 {Number(value).toFixed(digits)}
-            </span>
+            </div>
         </div>
     )
 }

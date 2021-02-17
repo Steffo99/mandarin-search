@@ -22,6 +22,22 @@ export default function useSearch() {
     const [norm8, setNorm8] = useState(false)
     const [norm16, setNorm16] = useState(false)
     const [norm32, setNorm32] = useState(false)
+    const norm = (
+        norm1 * 1 +
+        norm2 * 2 +
+        norm4 * 4 +
+        norm8 * 8 +
+        norm16 * 16 +
+        norm32 * 32
+    )
+    function setNorm(value) {
+        setNorm1(Boolean(value & 1))
+        setNorm2(Boolean(value & 2))
+        setNorm4(Boolean(value & 4))
+        setNorm8(Boolean(value & 8))
+        setNorm16(Boolean(value & 16))
+        setNorm32(Boolean(value & 32))
+    }
 
     const [filterGenreId, setFilterGenreId] = useState(null)
 
@@ -103,6 +119,8 @@ export default function useSearch() {
         setNorm16,
         norm32,
         setNorm32,
+        norm,
+        setNorm,
         filterGenreId,
         setFilterGenreId,
     }

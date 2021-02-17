@@ -1,0 +1,21 @@
+.CheckboxContainer {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.CheckboxArray {
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.CheckboxArrayValue {
+    width: 28px;
+}
+
+.Checkbox {
+
+}
