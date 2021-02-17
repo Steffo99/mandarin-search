@@ -5,6 +5,8 @@ import LinkAlbum from "../links/LinkAlbum";
 import LinkPerson from "../links/LinkPerson";
 import Style from "./EntityPerson.module.css";
 import classNames from "classnames";
+import Description from "../Description";
+import LinkRole from "../links/LinkRole";
 
 
 export default function EntityPerson({className, data}) {
@@ -12,7 +14,7 @@ export default function EntityPerson({className, data}) {
     const button = null;
 
     const album_involvements = data["album_involvements"].map((involvement, position) => (
-        <EntityField className={Style.Involvement} key={position} title={involvement["role"]["name"]}>
+        <EntityField className={Style.Involvement} key={position} title={<LinkRole data={involvement["role"]}/>}>
             <LinkAlbum data={involvement["album"]}/>
         </EntityField>
     ))
@@ -22,13 +24,7 @@ export default function EntityPerson({className, data}) {
             button={button}
             title={<LinkPerson data={data}/>}
             contents={
-                <div className={Style.Description}>
-                    {data["description"] ?
-                        data["description"]
-                        :
-                        <span className={"halfparent"}>No description.</span>
-                    }
-                </div>
+                <Description className={Style.Description} text={data["description"]}/>
             }
             fields={
                 <Fragment>

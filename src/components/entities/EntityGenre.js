@@ -4,6 +4,7 @@ import Entity from "./Entity";
 import LinkGenre from "../links/LinkGenre";
 import Style from "./EntityGenre.module.css";
 import classNames from "classnames";
+import Description from "../Description";
 
 
 export default function EntityGenre({className, data}) {
@@ -26,13 +27,7 @@ export default function EntityGenre({className, data}) {
             button={button}
             title={<LinkGenre data={data}/>}
             contents={
-                <div className={Style.Description}>
-                    {data["description"] ?
-                        data["description"]
-                        :
-                        <span className={"halfparent"}>No description.</span>
-                    }
-                </div>
+                <Description className={Style.Description} text={data["description"]}/>
             }
             fields={
                 <Fragment>

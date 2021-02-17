@@ -7,6 +7,7 @@ import LinkGenre from "../links/LinkGenre";
 import Style from "./EntityAlbum.module.css";
 import classNames from "classnames";
 import LinkRole from "../links/LinkRole";
+import Description from "../Description";
 
 
 export default function EntityAlbum({className, data}) {
@@ -28,13 +29,7 @@ export default function EntityAlbum({className, data}) {
             button={button}
             title={<LinkAlbum data={data}/>}
             contents={
-                <div className={Style.Description}>
-                    {data["description"] ?
-                        data["description"]
-                        :
-                        <span className={"halfparent"}>No description.</span>
-                    }
-                </div>
+                <Description className={Style.Description} text={data["description"]}/>
             }
             fields={
                 <Fragment>

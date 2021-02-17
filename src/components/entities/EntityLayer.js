@@ -6,6 +6,7 @@ import Entity from "./Entity";
 import LinkSong from "../links/LinkSong";
 import classNames from "classnames";
 import LinkLayer from "../links/LinkLayer";
+import Description from "../Description";
 
 
 export default function EntityLayer({className, data}) {
@@ -19,15 +20,7 @@ export default function EntityLayer({className, data}) {
             button={button}
             title={<LinkLayer data={data}/>}
             contents={
-                <Fragment>
-                    <div className={Style.Description}>
-                        {data["description"] ?
-                            data["description"]
-                            :
-                            <span className={"halfparent"}>No description.</span>
-                        }
-                    </div>
-                </Fragment>
+                <Description className={Style.Description} text={data["description"]}/>
             }
             fields={
                 <Fragment>

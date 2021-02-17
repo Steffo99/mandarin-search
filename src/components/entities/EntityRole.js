@@ -3,6 +3,7 @@ import Entity from "./Entity";
 import Style from "./EntityRole.module.css";
 import classNames from "classnames";
 import LinkRole from "../links/LinkRole";
+import Description from "../Description";
 
 
 export default function EntityRole({className, data}) {
@@ -14,13 +15,7 @@ export default function EntityRole({className, data}) {
             button={button}
             title={<LinkRole data={data}/>}
             contents={
-                <div className={Style.Description}>
-                    {data["description"] ?
-                        data["description"]
-                        :
-                        <span className={"halfparent"}>No description.</span>
-                    }
-                </div>
+                <Description className={Style.Description} text={data["description"]}/>
             }
             className={classNames(Style.EntityRole, className)}
         />

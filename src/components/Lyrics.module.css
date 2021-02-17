@@ -1,0 +1,7 @@
+.Lyrics {
+    font-style: italic;
+}
+
+.LyricsEmpty {
+    opacity: 0.5;
+}

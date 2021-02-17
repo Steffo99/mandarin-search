@@ -12,6 +12,8 @@ import Button from "../buttons/Button";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLayerGroup, faTimes} from "@fortawesome/free-solid-svg-icons";
 import LinkRole from "../links/LinkRole";
+import Description from "../Description";
+import Lyrics from "../Lyrics";
 
 
 export default function EntitySong({className, data}) {
@@ -51,23 +53,20 @@ export default function EntitySong({className, data}) {
             title={<LinkSong data={data}/>}
             contents={
                 <Fragment>
-                    <div className={Style.Description}>
-                        {data["description"] ?
-                            data["description"]
-                            :
-                            <span className={"halfparent"}>No description.</span>
-                        }
-                    </div>
-                    <div className={Style.Lyrics}>
-                        {data["lyrics"] ? data["lyrics"] : <span className={"halfparent"}>No lyrics.</span>}
-                    </div>
+                    <Description className={Style.Description} text={data["description"]}/>
+                    <Lyrics className={Style.Lyrics} text={data["lyrics"]}/>
                 </Fragment>
             }
             fields={
                 <Fragment>
                     {data["album"] ?
                         <EntityField title={"Album"} className={Style.Album}>
-                            <LinkAlbum data={data["album"]}/> {data["year"] ? `(${data["year"]})` : null} {data["disc"] ? `- Disc ${data["disc"]}` : null} {data["track"] ? `- Track ${data["track"]}` : null}
+                            <LinkAlbum data={data["album"]}/> {data["year"] ? `(${data["year"]})` : null}
+                        </EntityField>
+                    : null}
+                    {data["disc"] || data["track"] ?
+                        <EntityField title={"Position"}>
+                            {data["disc"] ? `Disc ${data["disc"]}` : null} {data["track"] ? `- Track ${data["track"]}` : null}
                         </EntityField>
                     : null}
                     {involvements}

@@ -1,0 +1,15 @@
+.Field {
+    display: flex;
+    padding: 6px 0;
+    border-bottom: 1px dotted rgba(255, 133, 0, 0.3);
+}
+
+.Title {
+    width: 240px;
+    color: #5F860A;
+}
+
+.Value {
+    flex-grow: 1;
+    color: #ff8500;
+}
