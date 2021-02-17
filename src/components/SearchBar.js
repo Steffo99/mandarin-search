@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import {useAuth0} from "@auth0/auth0-react"
+import {useNavigate} from "@reach/router";
 import Style from "./SearchBar.module.css"
 import Input from "./inputs/Input"
 import SearchButton from "./buttons/SearchButton"
@@ -11,6 +12,8 @@ import classNames from "classnames"
 
 export default function SearchBar({search}) {
     const {isAuthenticated} = useAuth0()
+    const navigate = useNavigate()
+
 
     const [showAdvanced, setAdvanced] = useState(false)
 
@@ -22,11 +25,17 @@ export default function SearchBar({search}) {
         text = search.text
     }
 
-    function searchOnEnter(event) {
+    function runSearch() {
+        search.search()
+        navigate("/results")
+    }
+
+    function runSearchOnEnter(event) {
         if (event.key === "Enter" && !disabled) {
-            search.search()
+            runSearch()
         }
     }
+
 
     return (
         <div className={Style.searchBlock}>
@@ -45,14 +54,14 @@ export default function SearchBar({search}) {
             </Select>
             <Input
                 value={text}
-                disabled={!isAuthenticated}
+                disabled={disabled}
                 onChange={(e) => search.setText(e.target.value)}
-                onKeyPress={searchOnEnter}
+                onKeyPress={runSearchOnEnter}
                 className={Style.Input}
             />
             <SearchButton
                 className={Style.Search}
-                onClick={search.search}
+                onClick={runSearch}
                 disabled={disabled}
                 isRunning={search.isLoading}
             />

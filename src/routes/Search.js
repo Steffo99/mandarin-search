@@ -1,12 +1,17 @@
 import React from "react"
 import ResultsLayout from "../components/layouts/ResultsLayout"
 import SearchResults from "../components/SearchResults"
+import Logo from "../components/Logo"
+import SearchBar from "../components/SearchBar"
 
 
-export default function Home(search) {
+export default function Search({search}) {
     return (
-        <ResultsLayout>
-            <SearchResults value={search.results}/>
+        <ResultsLayout
+            logo={<Logo/>}
+            searchBar={<SearchBar search={search}/>}
+        >
+            <SearchResults search={search}/>
         </ResultsLayout>
     )
 }

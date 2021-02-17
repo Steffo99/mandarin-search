@@ -43,7 +43,7 @@ export default function useSearch() {
 
     const [results, setResults] = useState(null)
 
-    const {search, isLoading, error} = useWrapper("[Search]", async function () {
+    const {wrapped: search, isLoading, error} = useWrapper("[Search]", async function () {
         if (text === "") {
             console.info("[Search] Clearing search results.")
             setResults(null)

@@ -13,6 +13,7 @@ import LinkLayer from "../components/links/LinkLayer"
 import RenderGenre from "../components/renderers/RenderGenre"
 import LinkGenre from "../components/links/LinkGenre"
 import useSearch from "../hooks/useSearch"
+import Search from "./Search"
 
 
 export default function MandarinRouter() {
@@ -21,6 +22,7 @@ export default function MandarinRouter() {
     return (
         <Router>
             <Home path={"/"} search={search}/>
+            <Search path={"/results"} search={search}/>
             <Inspector path={"/albums/:id"} elementType={"albums"} RendererType={RenderAlbum} LinkType={LinkAlbum}/>
             <Inspector path={"/songs/:id"} elementType={"songs"} RendererType={RenderSong} LinkType={LinkSong}/>
             <Inspector path={"/people/:id"} elementType={"people"} RendererType={RenderPerson} LinkType={LinkPerson}/>
