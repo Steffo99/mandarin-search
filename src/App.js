@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 import {Auth0Provider} from "@auth0/auth0-react";
-import Main from "./routes/Main";
+import Home from "./routes/Home";
 import LoginNav from "./components/LoginNav";
 import ContextInstance from "./contexts/ContextInstance";
 import {Router} from "@reach/router";
-import Route from "./components/Route";
+import Inspector from "./routes/Inspector";
 import RenderAlbum from "./components/renderers/RenderAlbum";
 import RenderSong from "./components/renderers/RenderSong";
 import RenderPerson from "./components/renderers/RenderPerson";
@@ -29,12 +29,12 @@ function App() {
         >
             <ContextInstance.Provider value={instance}>
                 <Router>
-                    <Main path={"/"}/>
-                    <Route path={"/albums/:id"} elementType={"albums"} RendererType={RenderAlbum} LinkType={LinkAlbum}/>
-                    <Route path={"/songs/:id"} elementType={"songs"} RendererType={RenderSong} LinkType={LinkSong}/>
-                    <Route path={"/people/:id"} elementType={"people"} RendererType={RenderPerson} LinkType={LinkPerson}/>
-                    <Route path={"/layers/:id"} elementType={"layers"} RendererType={RenderLayer} LinkType={LinkLayer}/>
-                    <Route path={"/genres/:id"} elementType={"genres"} RendererType={RenderGenre} LinkType={LinkGenre}/>
+                    <Home path={"/"}/>
+                    <Inspector path={"/albums/:id"} elementType={"albums"} RendererType={RenderAlbum} LinkType={LinkAlbum}/>
+                    <Inspector path={"/songs/:id"} elementType={"songs"} RendererType={RenderSong} LinkType={LinkSong}/>
+                    <Inspector path={"/people/:id"} elementType={"people"} RendererType={RenderPerson} LinkType={LinkPerson}/>
+                    <Inspector path={"/layers/:id"} elementType={"layers"} RendererType={RenderLayer} LinkType={LinkLayer}/>
+                    <Inspector path={"/genres/:id"} elementType={"genres"} RendererType={RenderGenre} LinkType={LinkGenre}/>
                 </Router>
                 <LoginNav
                     domain={domain}

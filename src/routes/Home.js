@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import CoverLayout from "../components/CoverLayout";
+import CoverLayout from "../components/layouts/CoverLayout";
 import Logo from "../components/Logo";
 import SearchBar from "../components/SearchBar";
-import ResultsLayout from "../components/ResultsLayout";
+import ResultsLayout from "../components/layouts/ResultsLayout";
 import SearchResults from "../components/SearchResults";
 
 
-export default function Main() {
+export default function Home() {
     const [searchResults, setSearchResults] = useState(null);
 
     const logo = <Logo/>

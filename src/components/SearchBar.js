@@ -5,6 +5,8 @@ import Input from "./inputs/Input";
 import SearchButton from "./buttons/SearchButton";
 import Select from "./inputs/Select";
 import ContextInstance from "../contexts/ContextInstance";
+import ToggleButton from "./buttons/ToggleButton";
+import SettingsButton from "./buttons/SettingsButton";
 
 
 export default function SearchBar({setSearchResults, startingQueryType, startingQueryText}) {
@@ -15,6 +17,7 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
     const [queryType, setQueryType] = useState(startingQueryType ?? "songs");
     const [queryText, setQueryText] = useState(startingQueryText ?? "");
     const [isRunning, setRunning] = useState(false);
+    const [isAdvanced, setAdvanced] = useState(false);
 
     async function search(_event) {
         setRunning(true);
@@ -86,10 +89,11 @@ export default function SearchBar({setSearchResults, startingQueryType, starting
                         }
                     }
                 }}
-                value={isAuthenticated ? queryText : "Not logged in."}
+                value={isAuthenticated ? queryText : "Login required to search"}
                 disabled={!isAuthenticated}
             />
-            <SearchButton className={Style.Button} onClick={search} disabled={!isAuthenticated} isRunning={isRunning}/>
+            <SearchButton className={Style.Search} onClick={search} disabled={!isAuthenticated} isRunning={isRunning}/>
+            <SettingsButton className={Style.Settings} state={isAdvanced} setState={setAdvanced}/>
         </div>
     )
 };

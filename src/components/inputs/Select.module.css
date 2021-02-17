@@ -8,10 +8,12 @@
     border: 2px solid #ff8500;
     background-color: white;
     color: #5F860A;
+
+    font-size: large;
 }
 
 .Select:hover {
-    background-color: rgba(95, 134, 10, 0.2);
+    background-color: rgba(255,133,0, 0.2);
 }
 
 .Select:focus {
@@ -22,7 +24,7 @@
 }
 
 .Select:active {
-    background-color: rgba(95, 134, 10, 0.5);
+    background-color: rgba(255,133,0, 0.5);
 }
 
 .Select[disabled] {

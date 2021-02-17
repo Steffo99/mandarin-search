@@ -12,18 +12,18 @@
     cursor: pointer;
 }
 
+.Button:active {
+    background-color: rgba(255,133,0, 0.5);
+}
+
 .Button:hover {
-    background-color: rgba(95, 134, 10, 0.2);
+    background-color: rgba(255,133,0, 0.2);
 }
 
 .Button:focus {
     /* Make a custom focus outline */
     outline: none;
     border-width: 4px;
-}
-
-.Button:active {
-    background-color: rgba(95, 134, 10, 0.5);
 }
 
 .Button[disabled] {

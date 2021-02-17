@@ -1,6 +1,6 @@
 .LoginNav {
     display: flex;
-    padding: 4px 16px;
+    padding: 4px 4px;
     color: #5F860A;
     border-top: 2px solid #ff8500;
     position: sticky;
@@ -9,10 +9,14 @@
     align-items: center;
     height: 64px;
     background-color: white;
+    font-size: large;
+}
+
+.LoginField {
+    margin: 0 12px;
 }
 
 .VerticalCenter {
     display: flex;
     flex-direction: column;
-    font-size: x-large;
 }

@@ -3,7 +3,7 @@ import Style from "./LoginNav.module.css";
 import classNames from "classnames";
 import {useAuth0} from "@auth0/auth0-react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faExclamationCircle, faSpinner, faTimes, faUserCircle, faSignInAlt, faSignOutAlt} from "@fortawesome/free-solid-svg-icons";
+import {faExclamationCircle, faSpinner, faTimes, faUserCircle, faSignInAlt, faSignOutAlt, faServer} from "@fortawesome/free-solid-svg-icons";
 import ContextInstance from "../contexts/ContextInstance";
 import Input from "./inputs/Input";
 import Button from "./buttons/Button";
@@ -71,12 +71,17 @@ export default function LoginNav({className, clientId, setClientId, domain, setD
 
     else if(user) {
         loginStatus = (
-            <span><FontAwesomeIcon icon={faUserCircle}/> {user["name"]}</span>
+            <div>
+                <span className={Style.LoginField}><FontAwesomeIcon icon={faUserCircle}/> {user["name"]}</span>
+            </div>
         )
         loginButton = (
-            <Button onClick={() => logout({returnTo: window.location.origin})}>
-                <FontAwesomeIcon icon={faSignOutAlt}/>
-            </Button>
+            <div>
+                <span className={Style.LoginField}><FontAwesomeIcon icon={faServer}/> {instance}</span>
+                <Button onClick={() => logout({returnTo: window.location.origin})}>
+                    <FontAwesomeIcon icon={faSignOutAlt}/>
+                </Button>
+            </div>
         )
     }
 

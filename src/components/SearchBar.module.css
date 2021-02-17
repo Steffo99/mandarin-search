@@ -1,7 +1,6 @@
 .searchBlock {
     display: grid;
-    grid-template-areas: "a b c";
-    grid-template-columns: 80px 1fr auto;
+    grid-template-columns: 100px 1fr auto auto;
     grid-column-gap: 8px;
     width: 100%;
     max-width: 638px;
@@ -16,6 +15,10 @@
     flex-grow: 1;
 }
 
-.Button {
+.Search {
     grid-column: 3;
+}
+
+.Settings {
+    grid-column: 4
 }

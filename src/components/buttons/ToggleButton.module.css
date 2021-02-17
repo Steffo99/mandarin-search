@@ -1,0 +1,19 @@
+.ToggleButton {
+
+}
+
+.True {
+    background-color: rgba(255, 133, 0, 0.5);
+}
+
+.True:hover {
+    background-color: rgba(255,133,0, 0.7);
+}
+
+.True:active {
+    background-color: rgba(255,133,0, 0.9);
+}
+
+.False {
+
+}

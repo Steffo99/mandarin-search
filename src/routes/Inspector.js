@@ -1,13 +1,18 @@
 import React from "react";
 import {Link} from "@reach/router";
-import Logo from "./Logo";
+import Logo from "../components/Logo";
 import useData from "../hooks/useData";
-import DisplayLayout from "./DisplayLayout";
+import DisplayLayout from "../components/layouts/DisplayLayout";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faExclamationCircle, faSpinner} from "@fortawesome/free-solid-svg-icons";
 
 
-export default function Route({elementType, id, RendererType, LinkType}) {
+export default function Inspector({
+    elementType,
+    id,
+    RendererType,
+    LinkType
+}) {
     const {data, error, isLoading} = useData(`/${elementType}/${id}`)
 
     const logo = (
