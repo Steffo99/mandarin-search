@@ -39,11 +39,11 @@ export default function useSearch() {
         setNorm32(Boolean(value & 32))
     }
 
-    const [filterGenreId, setFilterGenreId] = useState(null)
+    const [filterGenre, setFilterGenre] = useState(null)
 
     const [results, setResults] = useState(null)
 
-    const {wrapped: search, isLoading, error} = useWrapper("[Search]", async function () {
+    const {wrapped: search, isLoading, error} = useWrapper("Search", async function () {
         if (text === "") {
             console.info("[Search] Clearing search results.")
             setResults(null)
@@ -54,7 +54,7 @@ export default function useSearch() {
         const accessToken = await getAccessTokenSilently({})
 
         console.debug("[Search] Determining mode...")
-        const mode = filterGenreId === null ? "results" : "thesaurus"
+        const mode = filterGenre === null ? "results" : "thesaurus"
 
         console.info(`[Search] Searching: ${type} | ${text}`)
 
@@ -74,7 +74,7 @@ export default function useSearch() {
             "norm_8": norm8.toString(),
             "norm_16": norm16.toString(),
             "norm_32": norm32.toString(),
-            "filter_genre_id": filterGenreId === null ? undefined : filterGenreId.toString(),
+            "filter_genre_id": filterGenre === null ? undefined : filterGenre["id"].toString(),
         }).toString()
 
         console.debug("[Search] Fetching an API response...")
@@ -85,9 +85,13 @@ export default function useSearch() {
         })
 
         console.debug("[Search] Parsing JSON...")
-        const json = await response.json()
+        const data = await response.json()
 
-        setResults(json)
+        const results = {type, data}
+        console.debug("[Search] Setting results: ", results)
+        setResults(results)
+
+        console.info("[Search] Success!")
     })
 
     return {
@@ -121,7 +125,7 @@ export default function useSearch() {
         setNorm32,
         norm,
         setNorm,
-        filterGenreId,
-        setFilterGenreId,
+        filterGenre,
+        setFilterGenre,
     }
 }

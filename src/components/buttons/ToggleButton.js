@@ -4,7 +4,7 @@ import classNames from "classnames"
 import Button from "./Button"
 
 
-export default function ToggleButton({children, className, state, setState}) {
+export default function ToggleButton({children, className, state, setState, size, disabled}) {
     return (
         <Button
             className={classNames(
@@ -15,6 +15,8 @@ export default function ToggleButton({children, className, state, setState}) {
             onClick={(_e) => {
                 setState(!state)
             }}
+            size={size}
+            disabled={disabled}
         >
             {children}
         </Button>

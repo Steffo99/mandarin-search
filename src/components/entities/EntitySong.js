@@ -33,7 +33,7 @@ export default function EntitySong({className, data}) {
         )
     } else {
         button = (
-            <PlayerButton size={"large"} layerId={data["layers"][0]["id"]}/>
+            <PlayerButton size={"large"} data={data["layers"][0]}/>
         )
     }
 

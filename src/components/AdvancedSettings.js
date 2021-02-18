@@ -1,9 +1,11 @@
-import React from "react"
+import React, {useContext} from "react"
 import Style from "./AdvancedSettings.module.css"
 import classNames from "classnames"
 import Field from "./Field"
 import Slider from "./inputs/Slider"
 import CheckboxArray from "./inputs/CheckboxArray"
+import ContextSearch from "../contexts/ContextSearch"
+import LinkGenre from "./links/LinkGenre"
 
 
 const WEIGHT_TITLES = {
@@ -47,7 +49,9 @@ const WEIGHT_TITLES = {
 }
 
 
-export default function AdvancedSettings({className, search}) {
+export default function AdvancedSettings({className}) {
+    const search = useContext(ContextSearch);
+
     return (
         <div className={classNames(Style.AdvancedSettings, className)}>
             <div className={Style.BoxTitle}>
@@ -103,10 +107,15 @@ export default function AdvancedSettings({className, search}) {
                         "Divide the rank by the document length.",
                         "Divide the rank by the mean harmonic distance between extents.",
                         "Divide the rank by the number of unique words in document.",
-                        "Divide the rank by 1 + the logarithm of the number of unique words in document",
+                        "Divide the rank by 1 + the logarithm of the number of unique words in document.",
                         "Divide the rank by itself + 1.",
                     ]}
                 />
+            </Field>
+            <Field title={"Thesaurus filter"}>
+                {search.filterGenre ?
+                    <LinkGenre data={search.filterGenre}/>
+                : null}
             </Field>
         </div>
     )

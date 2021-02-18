@@ -12,7 +12,7 @@ import Description from "../Description"
 export default function EntityLayer({className, data}) {
 
     const button = (
-        <PlayerButton size={"large"} layerId={data["id"]}/>
+        <PlayerButton size={"large"} data={data}/>
     )
 
     return (

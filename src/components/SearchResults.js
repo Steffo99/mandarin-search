@@ -1,11 +1,12 @@
-import React from "react"
+import React, {useContext} from "react"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faCheck, faTimes} from "@fortawesome/free-solid-svg-icons"
 import ENTITY_TYPES from "./entities/ENTITY_TYPES"
+import ContextSearch from "../contexts/ContextSearch"
 
 
-export default function SearchResults({search}) {
-    const Entity = ENTITY_TYPES[search.type]
+export default function SearchResults() {
+    const search = useContext(ContextSearch);
 
     let message
     let entities
@@ -19,16 +20,17 @@ export default function SearchResults({search}) {
     else if (search.results.length === 0) {
         message = (
             <span>
-                <FontAwesomeIcon icon={faTimes}/> No {search.type} were found.
+                <FontAwesomeIcon icon={faTimes}/> No {search.results.type} were found.
             </span>
         )
     } else {
+        const Entity = ENTITY_TYPES[search.results.type]
         message = (
             <span>
-                <FontAwesomeIcon icon={faCheck}/> Found {search.results.length} {search.type}.
+                <FontAwesomeIcon icon={faCheck}/> Found {search.results.data.length} {search.results.type}.
             </span>
         )
-        entities = search.results.map((searchResult) => <Entity data={searchResult} key={searchResult["id"]}/>)
+        entities = search.results.data.map((searchResult) => <Entity data={searchResult} key={searchResult["id"]}/>)
     }
 
 

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useContext, Fragment} from "react"
 import {useAuth0} from "@auth0/auth0-react"
 import {useNavigate} from "@reach/router";
 import Style from "./SearchBar.module.css"
@@ -8,12 +8,13 @@ import Select from "./inputs/Select"
 import SettingsButton from "./buttons/SettingsButton"
 import AdvancedSettings from "./AdvancedSettings"
 import classNames from "classnames"
+import ContextSearch from "../contexts/ContextSearch"
 
 
-export default function SearchBar({search}) {
+export default function SearchBar({}) {
     const {isAuthenticated} = useAuth0()
     const navigate = useNavigate()
-
+    const search = useContext(ContextSearch)
 
     const [showAdvanced, setAdvanced] = useState(false)
 
@@ -46,11 +47,15 @@ export default function SearchBar({search}) {
                 className={Style.Select}
             >
                 <option value={"songs"}>Songs</option>
-                <option value={"people"}>People</option>
                 <option value={"albums"}>Albums</option>
-                <option value={"genres"}>Genres</option>
-                <option value={"roles"}>Roles</option>
-                <option value={"layers"}>Layers</option>
+                {search.filterGenre ? null :
+                    <Fragment>
+                        <option value={"people"}>People</option>
+                        <option value={"genres"}>Genres</option>
+                        <option value={"roles"}>Roles</option>
+                        <option value={"layers"}>Layers</option>
+                    </Fragment>
+                }
             </Select>
             <Input
                 value={text}
@@ -69,6 +74,7 @@ export default function SearchBar({search}) {
                 className={Style.Settings}
                 state={showAdvanced}
                 setState={setAdvanced}
+                disabled={disabled}
             />
             <AdvancedSettings
                 search={search}

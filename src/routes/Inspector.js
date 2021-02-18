@@ -2,46 +2,59 @@ import React from "react"
 import {Link} from "@reach/router"
 import Logo from "../components/Logo"
 import useData from "../hooks/useData"
-import DisplayLayout from "../components/layouts/DisplayLayout"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faExclamationCircle, faSpinner} from "@fortawesome/free-solid-svg-icons"
+import SearchBar from "../components/SearchBar"
+import ResultsLayout from "../components/layouts/ResultsLayout"
 
 
 export default function Inspector({
-                                      elementType,
-                                      id,
-                                      RendererType,
-                                      LinkType
-                                  }) {
+    search,
+    elementType,
+    id,
+    RendererType,
+    LinkType,
+    ButtonType,
+}) {
     const {data, error, isLoading} = useData(`/${elementType}/${id}`)
 
-    const logo = (
-        <Link to={"/"}><Logo/></Link>
-    )
+    const logo = <Logo/>
+    const searchBar = <SearchBar search={search}/>
+    let title
+    let contents
 
     if (error) {
-        const error = (
+        title = (
             <span><FontAwesomeIcon icon={faExclamationCircle}/> Errore</span>
         )
         console.error(error)
-        return (
-            <DisplayLayout logo={logo} title={error}/>
+    }
+
+    else if (isLoading) {
+        title = (
+            <span><FontAwesomeIcon icon={faSpinner} pulse={true}/> Caricamento...</span>
         )
     }
 
-    if (isLoading) {
-        const loading = (
-            <span><FontAwesomeIcon icon={faSpinner} pulse={true}/> Caricamento...</span>
+    else {
+        let button
+        if(ButtonType) {
+            button = <ButtonType data={data} size={"x-large"}/>
+        }
+        title = (
+            <h1>
+                {button} <LinkType data={data}/>
+            </h1>
         )
-
-        return (
-            <DisplayLayout logo={logo} title={loading}/>
+        contents = (
+            <RendererType data={data} search={search}/>
         )
     }
 
     return (
-        <DisplayLayout logo={logo} title={<LinkType data={data}/>}>
-            <RendererType data={data}/>
-        </DisplayLayout>
+        <ResultsLayout logo={logo} searchBar={searchBar}>
+            {title}
+            {contents}
+        </ResultsLayout>
     )
 }

@@ -1,15 +1,17 @@
-import React, {Fragment} from "react"
+import React, {Fragment, useContext} from "react"
 import EntityField from "./EntityField"
 import Entity from "./Entity"
 import LinkGenre from "../links/LinkGenre"
 import Style from "./EntityGenre.module.css"
 import classNames from "classnames"
 import Description from "../Description"
+import FilterButton from "../buttons/FilterButton"
 
 
 export default function EntityGenre({className, data}) {
-
-    const button = null
+    const button = (
+        <FilterButton data={data} size={"large"}/>
+    )
 
     const supergenre = (
         <EntityField title={"Supergenre"} className={Style.Supergenre}>

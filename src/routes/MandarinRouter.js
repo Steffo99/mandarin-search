@@ -14,20 +14,52 @@ import RenderGenre from "../components/renderers/RenderGenre"
 import LinkGenre from "../components/links/LinkGenre"
 import useSearch from "../hooks/useSearch"
 import Search from "./Search"
+import ContextSearch from "../contexts/ContextSearch"
+import PlayerButton from "../components/buttons/PlayerButton"
+import FilterButton from "../components/buttons/FilterButton"
 
 
 export default function MandarinRouter() {
     const search = useSearch()
 
     return (
-        <Router>
-            <Home path={"/"} search={search}/>
-            <Search path={"/results"} search={search}/>
-            <Inspector path={"/albums/:id"} elementType={"albums"} RendererType={RenderAlbum} LinkType={LinkAlbum}/>
-            <Inspector path={"/songs/:id"} elementType={"songs"} RendererType={RenderSong} LinkType={LinkSong}/>
-            <Inspector path={"/people/:id"} elementType={"people"} RendererType={RenderPerson} LinkType={LinkPerson}/>
-            <Inspector path={"/layers/:id"} elementType={"layers"} RendererType={RenderLayer} LinkType={LinkLayer}/>
-            <Inspector path={"/genres/:id"} elementType={"genres"} RendererType={RenderGenre} LinkType={LinkGenre}/>
-        </Router>
+        <ContextSearch.Provider value={search}>
+            <Router>
+                <Home path={"/"}/>
+                <Search path={"/results"}/>
+                <Inspector
+                    path={"/albums/:id"}
+                    elementType={"albums"}
+                    RendererType={RenderAlbum}
+                    LinkType={LinkAlbum}
+                />
+                <Inspector
+                    path={"/songs/:id"}
+                    elementType={"songs"}
+                    RendererType={RenderSong}
+                    LinkType={LinkSong}
+                />
+                <Inspector
+                    path={"/people/:id"}
+                    elementType={"people"}
+                    RendererType={RenderPerson}
+                    LinkType={LinkPerson}
+                />
+                <Inspector
+                    path={"/layers/:id"}
+                    elementType={"layers"}
+                    RendererType={RenderLayer}
+                    LinkType={LinkLayer}
+                    ButtonType={PlayerButton}
+                />
+                <Inspector
+                    path={"/genres/:id"}
+                    elementType={"genres"}
+                    RendererType={RenderGenre}
+                    LinkType={LinkGenre}
+                    ButtonType={FilterButton}
+                />
+            </Router>
+        </ContextSearch.Provider>
     )
 }

@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faDownload, faPause, faPlay, faSpinner} from "@fortawesome/free-solid-svg-icons"
 
 
-export default function PlayerButton({className, layerId, size}) {
+export default function PlayerButton({className, data, size}) {
     const {getAccessTokenSilently} = useAuth0()
     const instance = useContext(ContextInstance)
 
@@ -16,7 +16,7 @@ export default function PlayerButton({className, layerId, size}) {
     const [isPlaying, setPlaying] = useState(false)
 
     async function downloadLayer() {
-        console.info(`Downloading layer ${layerId}`)
+        console.info(`Downloading layer ${data["id"]}`)
 
         console.debug("Setting isDownloading...")
         setDownloading(true)
@@ -25,7 +25,7 @@ export default function PlayerButton({className, layerId, size}) {
         const accessToken = await getAccessTokenSilently()
 
         console.debug("Making the API request...")
-        const url = new URL(`${instance}/layers/${layerId}/download`)
+        const url = new URL(`${instance}/layers/${data["id"]}/download`)
         const songResponse = await fetch(url.toString(), {
             headers: {
                 "Authorization": `Bearer ${accessToken}`
