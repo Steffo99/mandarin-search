@@ -7,7 +7,7 @@ import MandarinRouter from "./routes/MandarinRouter"
 function App() {
     const [domain, setDomain] = useState("mandarin.eu.auth0.com")
     const [clientId, setClientId] = useState("IJ2VcIYHVkKVpIy02lxr2rMGBibDKuKM")
-    const [instance, setInstance] = useState("http://127.0.0.1:30009")
+    const [instance, setInstance] = useState("https://api.mandarin.steffo.eu")
 
     return (
         <Auth0Provider
