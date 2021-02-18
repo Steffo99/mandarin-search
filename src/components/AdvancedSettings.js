@@ -60,7 +60,7 @@ export default function AdvancedSettings({className}) {
             <Field title={<span>Weight A: <b>{WEIGHT_TITLES[search.type]["a"]}</b></span>}>
                 <Slider
                     min={-1}
-                    max={2}
+                    max={4}
                     step={0.1}
                     value={search.weightA}
                     onChange={(e) => search.setWeightA(e.target.value)}
@@ -70,7 +70,7 @@ export default function AdvancedSettings({className}) {
             <Field title={<span>Weight B: <b>{WEIGHT_TITLES[search.type]["b"]}</b></span>}>
                 <Slider
                     min={-1}
-                    max={2}
+                    max={4}
                     step={0.1}
                     value={search.weightB}
                     onChange={(e) => search.setWeightB(e.target.value)}
@@ -80,7 +80,7 @@ export default function AdvancedSettings({className}) {
             <Field title={<span>Weight C: <b>{WEIGHT_TITLES[search.type]["c"]}</b></span>}>
                 <Slider
                     min={-1}
-                    max={2}
+                    max={4}
                     step={0.1}
                     value={search.weightC}
                     onChange={(e) => search.setWeightC(e.target.value)}
@@ -90,7 +90,7 @@ export default function AdvancedSettings({className}) {
             <Field title={<span>Weight D: <b>{WEIGHT_TITLES[search.type]["d"]}</b></span>}>
                 <Slider
                     min={-1}
-                    max={2}
+                    max={4}
                     step={0.1}
                     value={search.weightD}
                     onChange={(e) => search.setWeightD(e.target.value)}
