@@ -6,15 +6,15 @@ import classNames from "classnames"
 export default function Lyrics({text, className}) {
     if (text) {
         return (
-            <div className={classNames(Style.Lyrics, className)}>
+            <pre className={classNames(Style.Lyrics, className)}>
                 {text}
-            </div>
+            </pre>
         )
     }
 
     return (
-        <div className={classNames(Style.Lyrics, Style.LyricsEmpty, className)}>
+        <pre className={classNames(Style.Lyrics, Style.LyricsEmpty, className)}>
             No lyrics available.
-        </div>
+        </pre>
     )
 }
