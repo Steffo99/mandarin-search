@@ -74,7 +74,9 @@ export default function useSearch() {
             "norm_8": norm8.toString(),
             "norm_16": norm16.toString(),
             "norm_32": norm32.toString(),
-            "filter_genre_id": filterGenre === null ? undefined : filterGenre["id"].toString(),
+            ...(filterGenre === null ? {} : {
+                "filter_genre_id": filterGenre["id"].toString()
+            })
         }).toString()
 
         console.debug("[Search] Fetching an API response...")
