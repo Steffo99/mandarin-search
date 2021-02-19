@@ -4,6 +4,10 @@
     padding: 16px;
 }
 
+.Tip {
+    font-size: small;
+}
+
 .BoxTitle {
     font-size: x-large;
     margin-bottom: 8px;

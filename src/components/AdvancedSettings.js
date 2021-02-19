@@ -54,6 +54,10 @@ export default function AdvancedSettings({className}) {
 
     return (
         <div className={classNames(Style.AdvancedSettings, className)}>
+            <div className={Style.Tip}>
+                You can use the <code>and</code>, <code>or</code>, <code>-token</code> and <code>"token1 token2"</code>
+                to perform boolean/phrasal searches.
+            </div>
             <div className={Style.BoxTitle}>
                 Advanced Search
             </div>
