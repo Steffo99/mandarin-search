@@ -17,10 +17,12 @@ export default function CheckboxArray({
     let checkboxes = []
 
     for(let i = 0; i < amount; i++) {
+        const checked = Boolean(value & (2 ** i));
+
         checkboxes.push(
             <input
                 type={"checkbox"}
-                value={value}
+                checked={checked}
                 onChange={recalculate}
                 className={classNames(Style.Checkbox, sliderClassName)}
                 title={titles ? titles[i] : undefined}
