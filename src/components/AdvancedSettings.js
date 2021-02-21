@@ -63,42 +63,42 @@ export default function AdvancedSettings({className}) {
             </div>
             <Field title={<span>Weight A: <b>{WEIGHT_TITLES[search.type]["a"]}</b></span>}>
                 <Slider
-                    min={-1}
-                    max={4}
-                    step={0.1}
+                    min={0}
+                    max={1}
+                    step={0.01}
                     value={search.weightA}
                     onChange={(e) => search.setWeightA(e.target.value)}
-                    digits={1}
+                    digits={2}
                 />
             </Field>
             <Field title={<span>Weight B: <b>{WEIGHT_TITLES[search.type]["b"]}</b></span>}>
                 <Slider
-                    min={-1}
-                    max={4}
-                    step={0.1}
+                    min={0}
+                    max={1}
+                    step={0.01}
                     value={search.weightB}
                     onChange={(e) => search.setWeightB(e.target.value)}
-                    digits={1}
+                    digits={2}
                 />
             </Field>
             <Field title={<span>Weight C: <b>{WEIGHT_TITLES[search.type]["c"]}</b></span>}>
                 <Slider
-                    min={-1}
-                    max={4}
-                    step={0.1}
+                    min={0}
+                    max={1}
+                    step={0.01}
                     value={search.weightC}
                     onChange={(e) => search.setWeightC(e.target.value)}
-                    digits={1}
+                    digits={2}
                 />
             </Field>
             <Field title={<span>Weight D: <b>{WEIGHT_TITLES[search.type]["d"]}</b></span>}>
                 <Slider
-                    min={-1}
-                    max={4}
-                    step={0.1}
+                    min={0}
+                    max={1}
+                    step={0.01}
                     value={search.weightD}
                     onChange={(e) => search.setWeightD(e.target.value)}
-                    digits={1}
+                    digits={2}
                 />
             </Field>
             <Field title={"Normalization mode"}>
